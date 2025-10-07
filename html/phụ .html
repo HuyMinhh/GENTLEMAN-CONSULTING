@@ -1,0 +1,530 @@
+<!-- <div class="smart-search-wrapper">
+                            <div class="results-search">
+                                <div class="title-search text-center">Kết quả
+                                    tìm kiếm</div>
+                                <div class="total-smart-item">=> 0</div>
+
+                                <div class="product-result-data">
+                                    <div class="group-head smart d-flex">Sản
+                                        phẩm</div>
+                                    <div class="no-product">Không có sản phẩm
+                                        phù hợp</div>
+                                </div>
+
+                                <div class="article-result-data padding-15">
+                                    <div class="group-head smart d-flex">Bài
+                                        viết</div>
+                                    <div class="no-article">Không có bài viết
+                                        phù hợp</div>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web bán hàng</title>
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <header id="header" class="site-header">
+            <div class="topbar">
+                <div class="marqueen-tobar">
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="site-header-center" class="header-top">
+                <div class="container">
+                    <!-- Logo -->
+                    <div class="content_header">
+                        <div class="logo">
+                            <a href>
+                                <img src="/img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ô tìm kiếm -->
+                    <div class="search_bar">
+                        <form action>
+                            <div class="search_inner">
+                                <input name="q" autocomplete="off" type="text"
+                                    size="20" placeholder="Tìm kiếm sản phẩm..."
+                                    aria-label="Search">
+                            </div>
+                            <button type="submit" class="search_button"
+                                aria-label="Tìm kiếm">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Icon bên phải -->
+                    <div class="group-icon-hearder">
+                        <div class="header-actions">
+                            <ul class="action-list">
+                                <li class="action-item">
+                                    <a href="#" class="action-btn">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span class="action-title">Cửa
+                                            Hàng</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="#" class="action-btn"
+                                        id="account-btn">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span class="action-title">Tài
+                                            khoản</span>
+                                    </a>
+
+                                </li>
+                                <li class="action-item">
+                                    <a href class="action-btn">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                        <span class="action-title">Giỏ
+                                            hàng</span>
+                                        <span class="count-cart">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <!-- Modal -->
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <button
+                        onclick="window.location.href='login.html'">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="d-flex d-flex-center">
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <span>Hàng mới</span>
+                                    </a>
+                                    <span class="header-new">New</span>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Sản Phẩm</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Tất cả
+                                                    sản phẩm</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href title="Áo"
+                                                    class="menu_link">Áo</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Khoác</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Thun</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Sơ Mi</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Quần</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            jean</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            kaki</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            tây</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-hat-cowboy"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Set Quần
+                                                    áo</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Phụ kiện</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Nón</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Thắt
+                                                    Lưng</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Dày-Dép</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Mắt
+                                                    kính</a>
+                                            </li>
+                                        </div>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href class="menu-link">
+                                            <span>Tin thời trang</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href class="menu-link">
+                                            <span>Giới Thiệu</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href class="menu-link">
+                                            <span>Liên Hệ</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+              
+            <!-- ===== SLIDESHOW ===== -->
+            <div class="slideshow-container">
+                <!-- Slides -->
+                <div class="slide fade active">
+                    <img src="/img/slider1.jpg" alt="Slide 1" />
+                </div>
+                <div class="slide fade">
+                    <img src="/img/slider2.jpg" alt="Slide 2" />
+                </div>
+                <div class="slide fade">
+                    <img src="/img/slider3.jpg" alt="Slide 3" />
+                </div>
+
+                <!-- Arrows -->
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+
+                <!-- Dots -->
+                <div class="dots-container">
+                    <span class="dot active" onclick="setSlide(0)"></span>
+                    <span class="dot" onclick="setSlide(1)"></span>
+                    <span class="dot" onclick="setSlide(2)"></span>
+                </div>
+            </div>
+
+            <!-- ===== DISCOUNT SECTION ===== -->
+            <div class="discount-section">
+                <h2>ƯU ĐÃI DÀNH CHO BẠN</h2>
+                <div class="discount-grid">
+
+                    <div class="discount-card">
+                        <div class="discount-code-area">OCT20</div>
+                        <div class="discount-info">
+                            <strong>GIẢM 20K</strong>
+                            <p>giảm 20K (đơn từ 299K)</p>
+                            <p>Mã: <span>OCT20</span></p>
+                            <p>HSD: 31/10/2025</p>
+                            <button onclick="copyCode('OCT20')">Sao chép
+                                mã</button>
+                        </div>
+                    </div>
+
+                    <div class="discount-card">
+                        <div class="discount-code-area">OCT40</div>
+                        <div class="discount-info">
+                            <strong>GIẢM 40K</strong>
+                            <p>đơn từ 599K (số lượng có hạn)</p>
+                            <p>Mã: <span>OCT40</span></p>
+                            <p>HSD: 31/10/2025</p>
+                            <button onclick="copyCode('OCT40')">Sao chép
+                                mã</button>
+                        </div>
+                    </div>
+
+                    <div class="discount-card">
+                        <div class="discount-code-area">OCT70</div>
+                        <div class="discount-info">
+                            <strong>GIẢM 70K</strong>
+                            <p>đơn từ 899K (số lượng có hạn)</p>
+                            <p>Mã: <span>OCT70</span></p>
+                            <p>HSD: 31/10/2025</p>
+                            <button onclick="copyCode('OCT70')">Sao chép
+                                mã</button>
+                        </div>
+                    </div>
+
+                    <div class="discount-card">
+                        <div class="discount-code-area">OCT100</div>
+                        <div class="discount-info">
+                            <strong>GIẢM 100K</strong>
+                            <p>đơn từ 1199K (số lượng có hạn)</p>
+                            <p>Mã: <span>OCT100</span></p>
+                            <p>HSD: 31/10/2025</p>
+                            <button onclick="copyCode('OCT100')">Sao chép
+                                mã</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="/js/index.js"></script>
+        </body>
+    </html>
+
+
+
+
+
+
+
+-----js
+
+    // Kiểm tra và cập nhật trạng thái tài khoản
+document.addEventListener("DOMContentLoaded", () => {
+    const accountBtn = document.getElementById("account-btn");
+    const loginModal = document.getElementById("loginModal");
+    const modalContent = document.querySelector(".modal-content");
+
+    if (accountBtn && loginModal && modalContent) {
+        const registeredAccounts = JSON.parse(localStorage.getItem("registeredAccounts")) || [];
+        const currentUserEmail = localStorage.getItem("currentUser");
+
+        console.log("Debug - registeredAccounts:", registeredAccounts);
+        console.log("Debug - currentUserEmail:", currentUserEmail);
+
+        if (currentUserEmail) {
+            const account = registeredAccounts.find((acc) => acc.email === currentUserEmail);
+            const displayName = account ? `${account.firstname || ""} ${account.lastname || ""}`.trim() : "Tài khoản";
+
+            console.log("Debug - Account found:", account);
+            console.log("Debug - Display name:", displayName);
+
+            accountBtn.innerHTML = `
+                <i class="fa-regular fa-user"></i>
+                <span class="action-title">${displayName}</span>
+            `;
+        } else {
+            accountBtn.innerHTML = `
+                <i class="fa-regular fa-user"></i>
+                <span class="action-title">Tài khoản</span>
+            `;
+        }
+
+        accountBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (currentUserEmail) {
+                if (confirm("Bạn có muốn đăng xuất không?")) {
+                    localStorage.removeItem("currentUser");
+                    accountBtn.innerHTML = `
+                        <i class="fa-regular fa-user"></i>
+                        <span class="action-title">Tài khoản</span>
+                    `;
+                    loginModal.style.display = "block";
+                    modalContent.style.position = "absolute";
+                    modalContent.style.top = accountBtn.getBoundingClientRect().height + 21 + "px";
+                    modalContent.style.left = "22px";
+                    modalContent.style.transform = "translateX(-50%)";
+                    modalContent.style.width = "180px";
+                    modalContent.style.minHeight = "40px";
+                    accountBtn.appendChild(modalContent);
+                }
+            } else {
+                loginModal.style.display = "block";
+                modalContent.style.position = "absolute";
+                modalContent.style.top = accountBtn.getBoundingClientRect().height + 21 + "px";
+                modalContent.style.left = "22px";
+                modalContent.style.transform = "translateX(-50%)";
+                modalContent.style.width = "180px";
+                modalContent.style.minHeight = "40px";
+                accountBtn.appendChild(modalContent);
+            }
+        });
+
+        window.addEventListener("click", function (e) {
+            if (!accountBtn.contains(e.target) && !loginModal.contains(e.target)) {
+                loginModal.style.display = "none";
+                if (modalContent.parentElement === accountBtn) {
+                    loginModal.appendChild(modalContent);
+                }
+            }
+        });
+
+        window.addEventListener("resize", function () {
+            if (loginModal.style.display === "block") {
+                const rect = accountBtn.getBoundingClientRect();
+                modalContent.style.top = rect.height + 21 + "px";
+                modalContent.style.left = "22px";
+                modalContent.style.transform = "translateX(-50%)";
+                modalContent.style.width = "180px";
+                modalContent.style.minHeight = "40px";
+            }
+        });
+    } else {
+        console.error("Modal elements not fully found!", {
+            accountBtn,
+            loginModal,
+            modalContent,
+        });
+    }
+
+    // Hiển thị chi tiết sản phẩm
+    function displayProductDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        if (!productId) {
+            document.querySelector('.product-detail').innerHTML = '<p>Sản phẩm không tồn tại!</p>';
+            return;
+        }
+
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        const product = products.find(p => p.name === productId); // Giả sử dùng name làm ID tạm thời, chỉnh lại nếu có productId
+
+        if (product) {
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('oldPrice').textContent = product.oldPrice ? `${product.oldPrice} VND` : '';
+            document.getElementById('newPrice').textContent = product.newPrice ? `${product.newPrice} VND` : `${product.price} VND`;
+            document.getElementById('sizes').textContent = product.sizes ? product.sizes.join(', ') : 'N/A';
+            document.getElementById('colors').textContent = product.colors ? product.colors.join(', ') : 'N/A';
+            document.getElementById('description').textContent = product.description || 'N/A';
+
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('mainImage');
+            product.images.forEach((img, index) => {
+                if (index < 9 && thumbnails[index]) {
+                    thumbnails[index].src = img;
+                    thumbnails[index].style.display = 'block';
+                }
+            });
+            mainImage.src = product.images[0] || '/img/placeholder.jpg';
+        } else {
+            document.querySelector('.product-detail').innerHTML = '<p>Sản phẩm không tìm thấy!</p>';
+        }
+    }
+
+    function changeImage(thumbnail) {
+        document.getElementById('mainImage').src = thumbnail.src;
+    }
+
+    // Gọi hàm khi trang load
+    displayProductDetail();
+});
+
+// Cập nhật index.js để liên kết icon kính lúp
+function displayProducts() {
+    const productList = document.getElementById('product-list');
+    if (!productList) {
+        console.error("Element with id 'product-list' not found!");
+        return;
+    }
+
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    productList.innerHTML = ''; // Xóa nội dung cũ
+
+    products.forEach(product => {
+        const div = document.createElement('div');
+        div.classList.add('product-item');
+        let imagesHtml = '';
+        if (product.images && product.images.length > 0) {
+            imagesHtml = `<div class="image-container"><img src="${product.images[0]}" alt="${product.name}" onerror="this.src='/img/placeholder.jpg';"><i class="fa-solid fa-magnifying-glass view-detail"></i></div>`;
+        } else {
+            imagesHtml = `<div class="image-container"><img src="/img/placeholder.jpg" alt="No image" class="placeholder"><i class="fa-solid fa-magnifying-glass view-detail"></i></div>`;
+        }
+        div.innerHTML = `
+            ${imagesHtml}
+            <h3>${product.name || 'Tên sản phẩm'}</h3>
+            <p class="old-price">${product.oldPrice ? product.oldPrice + ' VND' : ''}</p>
+            <p class="new-price">${(product.newPrice || product.price) ? (product.newPrice || product.price) + ' VND' : 'N/A'}</p>
+            <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i><span>Thêm vào giỏ hàng</span></button>
+        `;
+        // Thêm sự kiện click vào icon kính lúp
+        div.querySelector('.view-detail').addEventListener('click', () => {
+            window.location.href = `/product-detail.html?id=${product.name}`; // Sử dụng name làm ID tạm thời
+        });
+        productList.appendChild(div);
+    });
+
+    // (Giữ nguyên logic slider nếu có)
+}

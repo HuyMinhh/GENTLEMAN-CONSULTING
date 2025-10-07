@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Admin - Quản Lý Sản Phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .image-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .image-links input {
+            width: calc(33.33% - 7px); /* 3 input trên mỗi hàng */
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #productList {
+            margin-top: 20px;
+        }
+        .product-item {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            max-width: 100px;
+            height: auto;
+            margin-right: 5px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trang Admin - Quản Lý Sản Phẩm</h1>
+    
+    <!-- Danh sách sản phẩm -->
+    <h2>Danh Sách Sản Phẩm</h2>
+    <div id="productList"></div>
+    <div id="errorMessage" class="error"></div>
+
+    <!-- Form 1: Thêm sản phẩm cơ bản (tên, giá cũ, giá mới) -->
+    <h2>Form 1: Thêm Sản Phẩm Cơ Bản</h2>
+    <form id="form1">
+        <label for="name1">Tên Sản Phẩm:</label>
+        <input type="text" id="name1" required>
+        
+        <label for="category1">Loại Sản Phẩm:</label>
+        <input type="text" id="category1">
+        
+        <label for="oldPrice1">Giá Cũ:</label>
+        <input type="number" id="oldPrice1" required>
+        
+        <label for="newPrice1">Giá Mới:</label>
+        <input type="number" id="newPrice1" required>
+        
+        <button type="submit">Thêm Sản Phẩm</button>
+    </form>
+
+    <!-- Form 2: Thêm sản phẩm chi tiết (thông tin, giá, link ảnh, kích thước, màu sắc, mô tả) -->
+    <h2>Form 2: Thêm Sản Phẩm Chi Tiết</h2>
+    <form id="form2">
+        <label for="name2">Tên Sản Phẩm:</label>
+        <input type="text" id="name2" required>
+        
+        <label for="category2">Loại Sản Phẩm:</label>
+        <input type="text" id="category2">
+        
+        <label for="price2">Giá:</label>
+        <input type="number" id="price2" required>
+        
+        <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
+        <div class="image-links">
+            <input type="text" id="imageLink2-1" placeholder="Ảnh 1" required>
+            <input type="text" id="imageLink2-2" placeholder="Ảnh 2" required>
+            <input type="text" id="imageLink2-3" placeholder="Ảnh 3" required>
+            <input type="text" id="imageLink2-4" placeholder="Ảnh 4" required>
+            <input type="text" id="imageLink2-5" placeholder="Ảnh 5" required>
+            <input type="text" id="imageLink2-6" placeholder="Ảnh 6" required>
+            <input type="text" id="imageLink2-7" placeholder="Ảnh 7" required>
+            <input type="text" id="imageLink2-8" placeholder="Ảnh 8" required>
+            <input type="text" id="imageLink2-9" placeholder="Ảnh 9" required>
+        </div>
+        
+        <label for="sizes2">Kích Thước (phân cách bằng dấu phẩy, ví dụ: S,M,L):</label>
+        <input type="text" id="sizes2">
+        
+        <label for="colors2">Màu Sắc (phân cách bằng dấu phẩy, ví dụ: Đỏ,Xanh,Đen):</label>
+        <input type="text" id="colors2">
+        
+        <label for="description2">Mô Tả:</label>
+        <textarea id="description2" rows="4"></textarea>
+        
+        <button type="submit">Thêm Sản Phẩm</button>
+    </form>
+
+    <!-- Form 3: Sửa/Xóa sản phẩm chi tiết (tên, giá cũ/mới, mô tả, link ảnh, kích thước, màu sắc) -->
+    <h2>Form 3: Sửa/Xóa Sản Phẩm Chi Tiết</h2>
+    <form id="form3">
+        <label for="productSelect">Chọn Sản Phẩm Để Sửa/Xóa:</label>
+        <select id="productSelect">
+            <option value="">-- Chọn sản phẩm --</option>
+        </select>
+        
+        <label for="name3">Tên Sản Phẩm:</label>
+        <input type="text" id="name3">
+        
+        <label for="category3">Loại Sản Phẩm:</label>
+        <input type="text" id="category3">
+        
+        <label for="oldPrice3">Giá Cũ:</label>
+        <input type="number" id="oldPrice3">
+        
+        <label for="newPrice3">Giá Mới:</label>
+        <input type="number" id="newPrice3">
+        
+        <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
+        <div class="image-links">
+            <input type="text" id="imageLink3-1" placeholder="Ảnh 1">
+            <input type="text" id="imageLink3-2" placeholder="Ảnh 2">
+            <input type="text" id="imageLink3-3" placeholder="Ảnh 3">
+            <input type="text" id="imageLink3-4" placeholder="Ảnh 4">
+            <input type="text" id="imageLink3-5" placeholder="Ảnh 5">
+            <input type="text" id="imageLink3-6" placeholder="Ảnh 6">
+            <input type="text" id="imageLink3-7" placeholder="Ảnh 7">
+            <input type="text" id="imageLink3-8" placeholder="Ảnh 8">
+            <input type="text" id="imageLink3-9" placeholder="Ảnh 9">
+        </div>
+        
+        <label for="sizes3">Kích Thước (phân cách bằng dấu phẩy):</label>
+        <input type="text" id="sizes3">
+        
+        <label for="colors3">Màu Sắc (phân cách bằng dấu phẩy):</label>
+        <input type="text" id="colors3">
+        
+        <label for="description3">Mô Tả:</label>
+        <textarea id="description3" rows="4"></textarea>
+        
+        <button type="button" id="updateBtn">Cập Nhật Sản Phẩm</button>
+        <button type="button" id="deleteBtn">Xóa Sản Phẩm</button>
+    </form>
+
+    <script>
+        // Sử dụng localStorage để lưu trữ dữ liệu sản phẩm
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        const productList = document.getElementById('productList');
+        const productSelect = document.getElementById('productSelect');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Hàm hiển thị danh sách sản phẩm
+        function displayProducts() {
+            productList.innerHTML = '';
+            productSelect.innerHTML = '<option value="">-- Chọn sản phẩm --</option>';
+            products.forEach((product, index) => {
+                const div = document.createElement('div');
+                div.classList.add('product-item');
+                let imagesHtml = '';
+                if (product.images && product.images.length > 0) {
+                    product.images.slice(0, 3).forEach(img => {
+                        imagesHtml += `<img src="${img}" alt="${product.name}">`;
+                    });
+                } else {
+                    imagesHtml = '<p>Không có ảnh</p>';
+                }
+                div.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>Loại: ${product.category || 'N/A'}</p>
+                    <p>Giá Cũ: ${product.oldPrice || 'N/A'} VND</p>
+                    <p>Giá Mới: ${product.newPrice || product.price || 'N/A'} VND</p>
+                    ${imagesHtml}
+                    <p>Kích Thước: ${product.sizes ? product.sizes.join(', ') : 'N/A'}</p>
+                    <p>Màu Sắc: ${product.colors ? product.colors.join(', ') : 'N/A'}</p>
+                    <p>Mô Tả: ${product.description || 'N/A'}</p>
+                `;
+                productList.appendChild(div);
+
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = product.name;
+                productSelect.appendChild(option);
+            });
+        }
+
+        // Hàm lưu vào localStorage với kiểm tra quota
+        function saveProducts() {
+            try {
+                localStorage.setItem('products', JSON.stringify(products));
+                errorMessage.textContent = '';
+            } catch (e) {
+                if (e.name === 'QuotaExceededError') {
+                    errorMessage.textContent = 'Lỗi: Dung lượng localStorage đã vượt quá giới hạn! Vui lòng xóa một số sản phẩm.';
+                    console.error('QuotaExceededError:', e);
+                }
+            }
+            displayProducts();
+        }
+
+        // Đồng bộ hóa từ Form 1 sang Form 2 và Form 3
+        document.getElementById('name1').addEventListener('input', function() {
+            document.getElementById('name2').value = this.value;
+            document.getElementById('name3').value = this.value;
+        });
+
+        document.getElementById('category1').addEventListener('input', function() {
+            document.getElementById('category2').value = this.value;
+            document.getElementById('category3').value = this.value;
+        });
+
+        document.getElementById('oldPrice1').addEventListener('input', function() {
+            document.getElementById('oldPrice3').value = this.value;
+        });
+
+        document.getElementById('newPrice1').addEventListener('input', function() {
+            document.getElementById('price2').value = this.value;
+            document.getElementById('newPrice3').value = this.value;
+        });
+
+        // Đồng bộ từ Form 2 sang Form 3
+        document.getElementById('sizes2').addEventListener('input', function() {
+            document.getElementById('sizes3').value = this.value;
+        });
+
+        document.getElementById('colors2').addEventListener('input', function() {
+            document.getElementById('colors3').value = this.value;
+        });
+
+        document.getElementById('description2').addEventListener('input', function() {
+            document.getElementById('description3').value = this.value;
+        });
+
+        // Lấy danh sách ảnh từ Form 3
+        function getImageLinksForm3() {
+            const imageLinks = [];
+            for (let i = 1; i <= 9; i++) {
+                const link = document.getElementById(`imageLink3-${i}`).value.trim();
+                if (link) imageLinks.push(link);
+            }
+            return imageLinks.length > 0 ? imageLinks : products[productSelect.value]?.images || []; // Giữ ảnh cũ nếu không nhập mới
+        }
+
+        // Hàm xử lý thêm sản phẩm chung
+        function addProduct(name, category, oldPrice, newPrice, price, sizes, colors, description, imageLinks) {
+            const product = {
+                name,
+                category,
+                oldPrice,
+                newPrice,
+                price,
+                sizes: sizes.split(',').map(s => s.trim()).filter(s => s),
+                colors: colors.split(',').map(c => c.trim()).filter(c => c),
+                description,
+                images: imageLinks
+            };
+            products.push(product);
+            saveProducts();
+        }
+
+        // Form 1: Thêm cơ bản, đồng bộ với Form 2 và Form 3
+        document.getElementById('form1').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name1').value;
+            const category = document.getElementById('category1').value;
+            const oldPrice = parseFloat(document.getElementById('oldPrice1').value);
+            const newPrice = parseFloat(document.getElementById('newPrice1').value);
+            const price = parseFloat(document.getElementById('price2').value) || newPrice;
+            const sizes = document.getElementById('sizes2').value;
+            const colors = document.getElementById('colors2').value;
+            const description = document.getElementById('description2').value;
+            const imageLinks = getImageLinksForm3();
+
+            addProduct(name, category, oldPrice, newPrice, price, sizes, colors, description, imageLinks);
+            this.reset();
+            document.getElementById('form2').reset();
+            document.getElementById('form3').reset();
+        });
+
+        // Form 2: Thêm chi tiết, đồng bộ với Form 1 và Form 3
+        document.getElementById('form2').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name2').value;
+            const category = document.getElementById('category2').value;
+            const price = parseFloat(document.getElementById('price2').value);
+            const oldPrice = parseFloat(document.getElementById('oldPrice1').value) || null;
+            const newPrice = parseFloat(document.getElementById('newPrice1').value) || price;
+            const sizes = document.getElementById('sizes2').value;
+            const colors = document.getElementById('colors2').value;
+            const description = document.getElementById('description2').value;
+            const imageLinks = [];
+            for (let i = 1; i <= 9; i++) {
+                const link = document.getElementById(`imageLink2-${i}`).value.trim();
+                if (link) imageLinks.push(link);
+            }
+
+            addProduct(name, category, oldPrice, newPrice, price, sizes, colors, description, imageLinks);
+            this.reset();
+            document.getElementById('form1').reset();
+            document.getElementById('form3').reset();
+        });
+
+        // Form 3: Sửa/Xóa
+        document.getElementById('productSelect').addEventListener('change', function() {
+            const index = this.value;
+            if (index !== '') {
+                const product = products[index];
+                document.getElementById('name3').value = product.name || '';
+                document.getElementById('category3').value = product.category || '';
+                document.getElementById('oldPrice3').value = product.oldPrice || '';
+                document.getElementById('newPrice3').value = product.newPrice || product.price || '';
+                document.getElementById('description3').value = product.description || '';
+                document.getElementById('sizes3').value = product.sizes ? product.sizes.join(', ') : '';
+                document.getElementById('colors3').value = product.colors ? product.colors.join(', ') : '';
+                product.images.forEach((img, i) => {
+                    if (i < 9) document.getElementById(`imageLink3-${i + 1}`).value = img || '';
+                });
+            } else {
+                document.getElementById('form3').reset();
+            }
+        });
+
+        document.getElementById('updateBtn').addEventListener('click', function() {
+            const index = document.getElementById('productSelect').value;
+            if (index === '') {
+                errorMessage.textContent = 'Lỗi: Vui lòng chọn một sản phẩm để cập nhật!';
+                return;
+            }
+
+            const product = products[index];
+            const name = document.getElementById('name3').value.trim() || product.name;
+            const category = document.getElementById('category3').value.trim() || product.category;
+            const oldPrice = parseFloat(document.getElementById('oldPrice3').value) || product.oldPrice || 0;
+            const newPrice = parseFloat(document.getElementById('newPrice3').value) || product.newPrice || product.price || 0;
+            const sizes = document.getElementById('sizes3').value.split(',').map(s => s.trim()).filter(s => s.length) || product.sizes || [];
+            const colors = document.getElementById('colors3').value.split(',').map(c => c.trim()).filter(c => c.length) || product.colors || [];
+            const description = document.getElementById('description3').value.trim() || product.description || '';
+            const imageLinks = getImageLinksForm3();
+
+            product.name = name;
+            product.category = category;
+            product.oldPrice = oldPrice;
+            product.newPrice = newPrice;
+            product.sizes = sizes;
+            product.colors = colors;
+            product.description = description;
+            product.images = imageLinks.length > 0 ? imageLinks : product.images; // Giữ ảnh cũ nếu không nhập mới
+
+            saveProducts();
+            errorMessage.textContent = 'Cập nhật sản phẩm thành công!';
+            setTimeout(() => errorMessage.textContent = '', 3000); // Xóa thông báo sau 3 giây
+        });
+
+        document.getElementById('deleteBtn').addEventListener('click', function() {
+            const index = document.getElementById('productSelect').value;
+            if (index !== '' && confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                products.splice(index, 1);
+                saveProducts();
+                document.getElementById('form3').reset();
+                errorMessage.textContent = 'Xóa sản phẩm thành công!';
+                setTimeout(() => errorMessage.textContent = '', 3000); // Xóa thông báo sau 3 giây
+            } else if (index === '') {
+                errorMessage.textContent = 'Lỗi: Vui lòng chọn một sản phẩm để xóa!';
+            }
+        });
+
+        // Hiển thị ban đầu
+        displayProducts();
+    </script>
+</body>
+</html>

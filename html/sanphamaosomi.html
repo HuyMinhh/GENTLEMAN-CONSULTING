@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web bán hàng</title>
+        <link rel="stylesheet" href="/css/sanpham.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <header id="header" class="site-header">
+            <div class="topbar">
+                <div class="marqueen-tobar">
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="site-header-center" class="header-top">
+                <div class="container">
+                    <!-- Logo -->
+                    <div class="content_header">
+                        <div class="logo">
+                            <a href="/html/index.html">
+                                <img src="/img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ô tìm kiếm -->
+                    <div class="search_bar">
+                        <form action>
+                            <div class="search_inner">
+                                <input name="q" autocomplete="off" type="text"
+                                    size="20" placeholder="Tìm kiếm sản phẩm..."
+                                    aria-label="Search">
+                            </div>
+                            <button type="submit" class="search_button"
+                                aria-label="Tìm kiếm">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Icon bên phải -->
+                    <div class="group-icon-hearder">
+                        <div class="header-actions">
+                            <ul class="action-list">
+                                <li class="action-item">
+                                    <a href="#" class="action-btn">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span class="action-title">Cửa
+                                            Hàng</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="/html/login.html"
+                                        class="action-btn"
+                                        id="account-btn">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span class="action-title">Tài
+                                            khoản</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="/html/gioihang.html"
+                                        class="action-btn">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                        <span class="action-title">Giỏ
+                                            hàng</span>
+                                        <span class="count-cart">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <button onclick="window.location.href='login.html'">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="d-flex d-flex-center">
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <span>Hàng mới</span>
+                                    </a>
+                                    <span class="header-new">New</span>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Sản Phẩm</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href="/html/sanpham.html"
+                                                    class="menu_link">Tất cả
+                                                    sản phẩm</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href="/html/sanphamao.html" title="Áo"
+                                                    class="menu_link">Áo</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Khoác</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Thun</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Sơ Mi</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Quần</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            jean</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            kaki</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            tây</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-hat-cowboy"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Set Quần
+                                                    áo</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Phụ kiện</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Nón</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Thắt
+                                                    Lưng</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Dày-Dép</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Mắt
+                                                    kính</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Tin thời trang</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/html/gioithieu.html"
+                                        class="menu-link">
+                                        <span>Giới Thiệu</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/html/lienhe.html"
+                                        class="menu-link">
+                                        <span>Liên Hệ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Flash sale và products -->
+        <div class="container">
+            <div class="flash-sale">
+                <div class="banner">
+                    <picture>
+                        <img src="/img/slider3.jpg" alt="Slide 2" />
+                    </picture>
+                </div>
+                <h2>Sản Phẩm Nổi Bật</h2>
+                <div class="product-grid-container">
+                    <div class="sort-btn-container">
+                        <select id="sort-select" class="sort-select">
+                            <option value="default">Sắp xếp</option>
+                            <option value="asc">Giá Thấp đến Cao</option>
+                            <option value="desc">Giá Cao đến Thấp</option>
+                        </select>
+                    </div>
+                    <div id="product-list" class="product-grid">
+                        <!-- Sản phẩm sẽ được thêm động bởi JavaScript -->
+                    </div>
+                    <div class="load-more-container">
+                        <a id="load-more-btn" class="load-more-btn"
+                            onclick="loadMoreProducts()">Xem thêm</a>
+                        <p id="no-more-products-msg"
+                            style="font-size: 0.8em; color: #777; text-align: center; margin-top: 10px; display: none;">Hết
+                            sản phẩm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer"
+            style="background-color: #000; color: #fff; padding: 20px 0;">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>GIỚI THIỆU</h3>
+                        <p>160STORE - Chuỗi Phân Phối Thời Trang Nam Chuẩn
+                            Hiệu</p>
+                        <p>02871006789</p>
+                        <p>cx@160store.com</p>
+                        <p>Giờ mở cửa: 08:30 - 22:00</p>
+                        <p>Nhân viên tư vấn phản hồi tin nhắn đến 24:00 (Mỗi
+                            ngày)</p>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>CHÍNH SÁCH</h3>
+                        <ul>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Hướng
+                                    dẫn đặt hàng</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách đổi trả</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách bảo mật</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách vận chuyển</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>ĐỊA CHỈ CỬA HÀNG (22 CH)</h3>
+                        <div class="store-locations">
+                            <div class="location-group">
+                                <h4>HỒ CHÍ MINH (10 CH)</h4>
+                                <p>297/3 Tô Hiến Thành, Phường 13, Quận 10, TP
+                                    Hồ Chí Minh</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>HÀ NỘI (2 CH)</h4>
+                                <p>Số 26 phố Lê Đại Hành, Phường Lê Đại Hành,
+                                    Quận Hai Bà Trưng, TP Hà Nội</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>CẦN THƠ (2 CH)</h4>
+                                <p>Số 35 Trần Phú, Phường Cái Khế, Quận Ninh
+                                    Kiều, TP Cần Thơ</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>ĐÀ NẴNG (2 CH)</h4>
+                                <p>332 D. Lê Duẩn, Tân Chính, Thanh Khê, Đà
+                                    Nẵng</p>
+                            </div>
+                        </div>
+                        <a href="store.html" class="view-all-stores"
+                            style="color: #fff; text-decoration: none; display: inline-block; margin-top: 10px;">XEM
+                            TẤT CẢ CỬA HÀNG</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                        <div class="payment-methods"
+                            style="display: flex; gap: 10px;">
+                            <img src="/img/ship-codjpg.jpg"
+                                alt="Ship cod"
+                                style="width: 40px; height: auto;">
+                            <img src="/img/vnpay.png"
+                                alt="VN Pay" style="width: 40px; height: auto;">
+                            <img src="/img/momo.png"
+                                alt="Momo" style="width: 40px; height: auto;">
+                            <img src="/img/zalopay.png"
+                                alt="ZaloPay"
+                                style="width: 40px; height: auto;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom"
+                    style="text-align: center; padding-top: 20px; border-top: 1px solid #fff; margin-top: 20px;">
+                    <p>BẢN QUYỀN THUỘC VỀ GENTLEMAN</p>
+                </div>
+            </div>
+        </footer>
+        <script src="/js/sanphamaothung.js"></script>
+    </body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chi Tiết sản phẩm </title>
+        <link rel="stylesheet" href="/css/chitiet.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <header id="header" class="site-header">
+            <div class="topbar">
+                <div class="marqueen-tobar">
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href>
+                            <p>
+                                <strong> chữ viết </strong>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="site-header-center" class="header-top">
+                <div class="container">
+                    <!-- Logo -->
+                    <div class="content_header">
+                        <div class="logo">
+                            <a href="/html/index.html">
+                                <img src="/img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ô tìm kiếm -->
+                    <div class="search_bar">
+                        <form id="searchForm">
+                            <div class="search_inner">
+                                <input name="q" autocomplete="off" type="text"
+                                    size="20" placeholder="Tìm kiếm sản phẩm..."
+                                    aria-label="Search" id="searchInput">
+                            </div>
+                            <button type="submit" class="search_button"
+                                aria-label="Tìm kiếm">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                        <!-- Container hiển thị kết quả tìm kiếm -->
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+
+                    <!-- Icon bên phải -->
+                    <div class="group-icon-hearder">
+                        <div class="header-actions">
+                            <ul class="action-list">
+                                <li class="action-item">
+                                    <a href="#" class="action-btn">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span class="action-title">Cửa
+                                            Hàng</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="/html/login.html"
+                                        class="action-btn"
+                                        id="account-btn">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span class="action-title">Tài
+                                            khoản</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="/html/gioihang.html"
+                                        class="action-btn">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                        <span class="action-title">Giỏ
+                                            hàng</span>
+                                        <span class="count-cart">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <button onclick="window.location.href='login.html'">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="d-flex d-flex-center">
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#">
+                                        <span>Hàng mới</span>
+                                    </a>
+                                    <span class="header-new">New</span>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Sản Phẩm</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Tất cả
+                                                    sản phẩm</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href title="Áo"
+                                                    class="menu_link">Áo</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Khoác</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Thun</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Áo
+                                                            Sơ Mi</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Quần</a>
+                                                <i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            jean</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            kaki</a>
+                                                    </li>
+                                                    <li class="menu_item_lv3">
+                                                        <a href
+                                                            class="menu_link">Quần
+                                                            tây</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-hat-cowboy"></i>
+                                                <a href title="Quần"
+                                                    class="menu_link">Set Quần
+                                                    áo</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Phụ kiện</span>
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Nón</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Thắt
+                                                    Lưng</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href
+                                                    class="menu_link">Dày-Dép</a>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <a href class="menu_link">Mắt
+                                                    kính</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link">
+                                        <span>Tin thời trang</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/html/gioithieu.html"
+                                        class="menu-link">
+                                        <span>Giới Thiệu</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/html/lienhe.html"
+                                        class="menu-link">
+                                        <span>Liên Hệ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Nội dung chi tiết sản phẩm -->
+        <div class="container">
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <button class="nav-btn prev-btn"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <img src alt="Hình sản phẩm" id="mainImage">
+                        <button class="nav-btn next-btn"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <img src alt="Thumbnail 1" class="thumbnail"
+                            onclick="changeImage(this, 0)">
+                        <img src alt="Thumbnail 2" class="thumbnail"
+                            onclick="changeImage(this, 1)">
+                        <img src alt="Thumbnail 3" class="thumbnail"
+                            onclick="changeImage(this, 2)">
+                        <img src alt="Thumbnail 4" class="thumbnail"
+                            onclick="changeImage(this, 3)">
+                        <img src alt="Thumbnail 5" class="thumbnail"
+                            onclick="changeImage(this, 4)">
+                        <img src alt="Thumbnail 6" class="thumbnail"
+                            onclick="changeImage(this, 5)">
+                        <img src alt="Thumbnail 7" class="thumbnail"
+                            onclick="changeImage(this, 6)">
+                        <img src alt="Thumbnail 8" class="thumbnail"
+                            onclick="changeImage(this, 7)">
+                        <img src alt="Thumbnail 9" class="thumbnail"
+                            onclick="changeImage(this, 8)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h1 id="productName"></h1>
+                    <p class="price-section">
+                        <span class="new-price" id="newPrice"></span>
+                        <span class="old-price" id="oldPrice"></span>
+                    </p>
+                    <p><strong>Loại sản phẩm:</strong> <span
+                            id="category"></span></p>
+                    <p><strong>Đánh giá:</strong>
+                        <span class="rating">
+                            <span class="stars" id="ratingStars"></span>
+                            <span class="rating-score" id="ratingScore"></span>
+                            <span class="rating-count" id="ratingCount"></span>
+                        </span>
+                    </p>
+                    <p><strong>Kích thước:</strong>
+                        <span id="sizes-container"></span>
+                    </p>
+                    <p><strong>Màu sắc:</strong>
+                        <span id="colors-container"></span>
+                    </p>
+                    <div class="discount-frame">
+                        <p class="promotion-title">🎁 <strong>KHUYẾN MÃI - ƯU
+                                ĐÃI</strong></p>
+                        <p>📛 Nhập mã <strong>OCT20</strong> GIẢM 20K ĐƠN TỪ
+                            299K</p>
+                        <p>📛 Nhập mã <strong>OCT40</strong> GIẢM 40K ĐƠN TỪ
+                            599K</p>
+                        <p>📛 Nhập mã <strong>OCT70</strong> GIẢM 70K ĐƠN TỪ
+                            899K</p>
+                        <p>📛 Nhập mã <strong>OCT100</strong> GIẢM 100K ĐƠN TỪ
+                            1199K</p>
+                        <p>🚚 <strong>FREESHIP</strong> đơn từ 399K</p>
+                    </div>
+                    <div class="discount-codes">
+                        <p>Mã giảm giá bạn có thể sử dụng:</p>
+                        <div class="discount-code-container">
+                            <button class="discount-code">OCT20</button>
+                            <button class="discount-code">OCT40</button>
+                            <button class="discount-code">OCT70</button>
+                            <button class="discount-code">OCT100</button>
+                        </div>
+                    </div>
+                    <p><strong>Giảm giá:</strong> <span
+                            id="discount"></span>%</p>
+                    <p><strong>Số lượng:</strong>
+                        <div class="quantity-section">
+                            <button class="quantity-btn decrease">-</button>
+                            <input type="number" id="quantity" value="1"
+                                min="1">
+                            <button class="quantity-btn increase">+</button>
+                        </div>
+                    </p>
+                    <div class="button-section">
+                        <button class="add-to-cart-btn"><i
+                                class="fas fa-shopping-cart"></i><span>Thêm vào
+                                giỏ hàng</span></button>
+                        <button class="buy-now-btn"><i
+                                class="fas fa-check"></i><span>Đặt
+                                hàng</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="support-info">
+                <div class="support-item">
+                    <i class="fas fa-box-open"></i>
+                    <p>Đổi trả tận nhà trong vòng 15 ngày</p>
+                </div>
+                <div class="support-item">
+                    <i class="fas fa-shipping-fast"></i>
+                    <p>Miễn phí vận chuyển đơn từ 399K</p>
+                </div>
+                <div class="support-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Bảo hành trong vòng 30 ngày</p>
+                </div>
+                <div class="support-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>Hotline 0287.100.6789 hỗ trợ từ 8h30–24h</p>
+                </div>
+                <div class="support-item">
+                    <i class="fas fa-truck"></i>
+                    <p>Giao hàng toàn quốc</p>
+                </div>
+                <div class="support-item">
+                    <i class="fas fa-gift"></i>
+                    <p>Có cộng dồn ưu đãi KHTT</p>
+                </div>
+            </div>
+            <div class="description-section">
+                <div class="tab-buttons">
+                    <button class="tab-button active"
+                        onclick="openTab('description')">Mô tả</button>
+                    <button class="tab-button"
+                        onclick="openTab('warranty')">Chính sách bảo
+                        hành</button>
+                    <button class="tab-button"
+                        onclick="openTab('shipping')">Chính sách giao
+                        hàng</button>
+                </div>
+                <div class="tab-content">
+                    <div id="description" class="tab-pane active">
+                        <h3>Mô tả sản phẩm</h3>
+                        <div class="description-content"
+                            id="description-content"></div>
+                    </div>
+                    <div id="warranty" class="tab-pane">
+                        <h3>Chính sách bảo hành</h3>
+                        <div class="additional-info-content"
+                            id="warranty-content"></div>
+                    </div>
+                    <div id="shipping" class="tab-pane">
+                        <h3>Chính sách giao hàng</h3>
+                        <div class="additional-info-content"
+                            id="shipping-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer"
+            style="background-color: #000; color: #fff; padding: 20px 0;">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>GIỚI THIỆU</h3>
+                        <p>160STORE - Chuỗi Phân Phối Thời Trang Nam Chuẩn
+                            Hiệu</p>
+                        <p>02871006789</p>
+                        <p>cx@160store.com</p>
+                        <p>Giờ mở cửa: 08:30 - 22:00</p>
+                        <p>Nhân viên tư vấn phản hồi tin nhắn đến 24:00 (Mỗi
+                            ngày)</p>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>CHÍNH SÁCH</h3>
+                        <ul>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Hướng
+                                    dẫn đặt hàng</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách đổi trả</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách bảo mật</a></li>
+                            <li><a href="#"
+                                    style="color: #fff; text-decoration: none;">Chính
+                                    sách vận chuyển</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>ĐỊA CHỈ CỬA HÀNG (22 CH)</h3>
+                        <div class="store-locations">
+                            <div class="location-group">
+                                <h4>HỒ CHÍ MINH (10 CH)</h4>
+                                <p>297/3 Tô Hiến Thành, Phường 13, Quận 10, TP
+                                    Hồ Chí Minh</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>HÀ NỘI (2 CH)</h4>
+                                <p>Số 26 phố Lê Đại Hành, Phường Lê Đại Hành,
+                                    Quận Hai Bà Trưng, TP Hà Nội</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>CẦN THƠ (2 CH)</h4>
+                                <p>Số 35 Trần Phú, Phường Cái Khế, Quận Ninh
+                                    Kiều, TP Cần Thơ</p>
+                            </div>
+                            <div class="location-group">
+                                <h4>ĐÀ NẴNG (2 CH)</h4>
+                                <p>332 D. Lê Duẩn, Tân Chính, Thanh Khê, Đà
+                                    Nẵng</p>
+                            </div>
+                        </div>
+                        <a href="store.html" class="view-all-stores"
+                            style="color: #fff; text-decoration: none; display: inline-block; margin-top: 10px;">XEM
+                            TẤT CẢ CỬA HÀNG</a>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
+                        <div class="payment-methods"
+                            style="display: flex; gap: 10px;">
+                            <img src="/img/ship-codjpg.jpg"
+                                alt="Ship cod"
+                                style="width: 40px; height: auto;">
+                            <img src="/img/vnpay.png"
+                                alt="VN Pay" style="width: 40px; height: auto;">
+                            <img src="/img/momo.png"
+                                alt="Momo" style="width: 40px; height: auto;">
+                            <img src="/img/zalopay.png"
+                                alt="ZaloPay"
+                                style="width: 40px; height: auto;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom"
+                    style="text-align: center; padding-top: 20px; border-top: 1px solid #fff; margin-top: 20px;">
+                    <p>BẢN QUYỀN THUỘC VỀ GENTLEMAN</p>
+                </div>
+            </div>
+        </footer>
+        <script src="/js/chitiet.js"></script>
+        <!-- <script src="/js/giohang.js"></script> -->
+    </body>
+</html>

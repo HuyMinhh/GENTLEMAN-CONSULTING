@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>register</title>
+        <link rel="stylesheet" href="/css/register.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <header id="header" class="site-header">
+            <div class="topbar">
+                <div class="marqueen-tobar">
+                    <div class="item"><a href><p><strong>chữ
+                                    viết</strong></p></a></div>
+                    <div class="item"><a href><p><strong>chữ
+                                    viết</strong></p></a></div>
+                    <div class="item"><a href><p><strong>chữ
+                                    viết</strong></p></a></div>
+                    <div class="item"><a href><p><strong>chữ
+                                    viết</strong></p></a></div>
+                    <div class="item"><a href><p><strong>chữ
+                                    viết</strong></p></a></div>
+                </div>
+            </div>
+
+            <div id="site-header-center" class="header-top">
+                <div class="container">
+                    <div class="content_header">
+                        <div class="logo">
+                            <a href="/html/index.html">
+                                <img src="/img/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="search_bar">
+                        <form action>
+                            <div class="search_inner">
+                                <input name="q" autocomplete="off" type="text"
+                                    size="20" placeholder="Tìm kiếm sản phẩm..."
+                                    aria-label="Search">
+                            </div>
+                            <button type="submit" class="search_button"
+                                aria-label="Tìm kiếm">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="group-icon-hearder">
+                        <div class="header-actions">
+                            <ul class="action-list">
+                                <li class="action-item">
+                                    <a href="#" class="action-btn">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span class="action-title">Cửa
+                                            Hàng</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href="#" class="action-btn"
+                                        id="account-btn">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span class="action-title">Tài
+                                            khoản</span>
+                                    </a>
+                                </li>
+                                <li class="action-item">
+                                    <a href class="action-btn">
+                                        <i class="fa-solid fa-bag-shopping"></i>
+                                        <span class="action-title">Giỏ
+                                            hàng</span>
+                                        <span class="count-cart">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="registerModal" class="modal">
+                <div class="modal-content">
+                    <button onclick="window.location.href='register.html'">Đăng
+                        ký</button>
+                </div>
+            </div>
+
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="d-flex d-flex-center">
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#"><span>Hàng mới</span></a>
+                                    <span class="header-new">New</span>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link"><span>Sản
+                                            Phẩm</span><i
+                                            class="fa-solid fa-angle-down"></i></a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2"><a href
+                                                    class="menu_link">Tất cả sản
+                                                    phẩm</a></li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i><a
+                                                    href title="Áo"
+                                                    class="menu_link">Áo</a><i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Áo
+                                                            Khoác</a></li>
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Áo
+                                                            Thun</a></li>
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Áo
+                                                            Sơ Mi</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-shirt"></i><a
+                                                    href title="Quần"
+                                                    class="menu_link">Quần</a><i
+                                                    class="fa-solid fa-arrow-right"></i>
+                                                <ul class="menu_dropdown_lv2">
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Quần
+                                                            jean</a></li>
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Quần
+                                                            kaki</a></li>
+                                                    <li class="menu_item_lv3"><a
+                                                            href
+                                                            class="menu_link">Quần
+                                                            tây</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu_item_lv2">
+                                                <i
+                                                    class="fa-solid fa-hat-cowboy"></i><a
+                                                    href title="Quần"
+                                                    class="menu_link">Set Quần
+                                                    áo</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item">
+                                    <a href class="menu-link"><span>Phụ
+                                            kiện</span><i
+                                            class="fa-solid fa-angle-down"></i></a>
+                                    <div class="sub_top_menu">
+                                        <ul class="menu_dropdown">
+                                            <li class="menu_item_lv2"><a href
+                                                    class="menu_link">Nón</a></li>
+                                            <li class="menu_item_lv2"><a href
+                                                    class="menu_link">Thắt
+                                                    Lưng</a></li>
+                                            <li class="menu_item_lv2"><a href
+                                                    class="menu_link">Dày-Dép</a></li>
+                                            <li class="menu_item_lv2"><a href
+                                                    class="menu_link">Mắt
+                                                    kính</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="menu-item"><a href
+                                        class="menu-link"><span>Tin thời
+                                            trang</span></a></li>
+                                <li class="menu-item"><a
+                                        href="/html/gioithieu.html"
+                                        class="menu-link"><span>Giới
+                                            Thiệu</span></a></li>
+                                <li class="menu-item"><a
+                                        href="/html/lienhe.html"
+                                        class="menu-link"><span>Liên
+                                            Hệ</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="register-container">
+            <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+            <form action="#" method="post">
+                <input type="text" id="register-firstname" placeholder="Họ"
+                    required>
+                <input type="text" id="register-lastname" placeholder="Tên"
+                    required>
+                <input type="email" id="register-email"
+                    placeholder="Nhập email hoặc số điện thoại" required>
+                <input type="password" id="register-password"
+                    placeholder="Mật khẩu" required>
+                <input type="password" id="confirm-password"
+                    placeholder="Xác nhận mật khẩu" required>
+                <div class="show-password">
+                    <input type="checkbox" id="showRegisterPassword"> <label
+                        for="showRegisterPassword">Hiện mật khẩu</label>
+                </div>
+                <button type="submit">ĐĂNG KÝ</button>
+            </form>
+            <a href="login.html">Đã có tài khoản? Đăng nhập</a>
+        </div>
+
+        <div id="registerModal" class="modal">
+            <div class="modal-content">
+                <button onclick="window.location.href='register.html'">Đăng
+                    ký</button>
+            </div>
+        </div>
+    </body>
+    <script src="/js/register.js"></script>
+</html>
