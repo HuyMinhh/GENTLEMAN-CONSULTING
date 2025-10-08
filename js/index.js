@@ -1574,7 +1574,7 @@ function showAddToCartModal(product) {
     <div class="modal-content1">
       <span class="close-modal">&times;</span>
       <div class="product-mini-detail">
-        <img src="${product.images[0] || "/img/placeholder.jpg"}" alt="${product.name}">
+        <img src="${product.images[0] || "img/placeholder.jpg"}" alt="${product.name}">
         <div>
           <h2>${product.name}</h2>
           <p class="price-section">
@@ -1694,11 +1694,11 @@ function searchProducts(query) {
       const div = document.createElement("div");
       div.classList.add("search-result-item");
       div.innerHTML = `
-        <img src="${product.images && product.images.length > 0 ? product.images[0] : '/img/placeholder.jpg'}" alt="${product.name}">
+        <img src="${product.images && product.images.length > 0 ? product.images[0] : 'img/placeholder.jpg'}" alt="${product.name}">
         <h4>${product.name}</h4>
       `;
       div.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
         searchResults.classList.remove("active");
       });
       searchResults.appendChild(div);
@@ -1845,7 +1845,7 @@ function displayProducts() {
   document.querySelectorAll(".view-detail").forEach(icon => {
     icon.addEventListener("click", () => {
       const productName = icon.closest(".product-item").querySelector("h3").textContent;
-      window.location.href = `/html/chitiet.html?id=${encodeURIComponent(productName)}`;
+      window.location.href = `chitiet.html?id=${encodeURIComponent(productName)}`;
     });
   });
 }

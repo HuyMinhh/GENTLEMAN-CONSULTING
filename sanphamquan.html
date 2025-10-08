@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Web bán hàng</title>
-        <link rel="stylesheet" href="/css/sanpham.css">
+        <link rel="stylesheet" href="css/sanpham.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="icon" type="image/png" href="favicon.png">
@@ -56,25 +56,27 @@
                     <!-- Logo -->
                     <div class="content_header">
                         <div class="logo">
-                            <a href="/html/index.html">
-                                <img src="/img/logo.png" alt="Logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="Logo">
                             </a>
                         </div>
                     </div>
 
                     <!-- Ô tìm kiếm -->
                     <div class="search_bar">
-                        <form action>
+                        <form id="searchForm">
                             <div class="search_inner">
                                 <input name="q" autocomplete="off" type="text"
                                     size="20" placeholder="Tìm kiếm sản phẩm..."
-                                    aria-label="Search">
+                                    aria-label="Search" id="searchInput">
                             </div>
                             <button type="submit" class="search_button"
                                 aria-label="Tìm kiếm">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </form>
+                        <!-- Container hiển thị kết quả tìm kiếm -->
+                        <div id="searchResults" class="search-results"></div>
                     </div>
 
                     <!-- Icon bên phải -->
@@ -82,14 +84,13 @@
                         <div class="header-actions">
                             <ul class="action-list">
                                 <li class="action-item">
-                                    <a href="#" class="action-btn">
+                                    <a href="index.html" class="action-btn">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <span class="action-title">Cửa
-                                            Hàng</span>
+                                        <span class="action-title">Cửa hàng</span>
                                     </a>
                                 </li>
                                 <li class="action-item">
-                                    <a href="/html/login.html"
+                                    <a href="login.html"
                                         class="action-btn"
                                         id="account-btn">
                                         <i class="fa-regular fa-user"></i>
@@ -124,43 +125,43 @@
                         <nav class="main-nav">
                             <ul class="menu">
                                 <li class="menu-item">
-                                    <a href="#">
-                                        <span>Hàng mới</span>
+                                    <a href="index.html">
+                                        <span>Trang chủ</span>
                                     </a>
                                     <span class="header-new">New</span>
                                 </li>
                                 <li class="menu-item">
-                                    <a href class="menu-link">
+                                    <a href="sanpham.html" class="menu-link">
                                         <span>Sản Phẩm</span>
                                         <i class="fa-solid fa-angle-down"></i>
                                     </a>
                                     <div class="sub_top_menu">
                                         <ul class="menu_dropdown">
                                             <li class="menu_item_lv2">
-                                                <a href="/html/sanpham.html"
+                                                <a href="sanpham.html"
                                                     class="menu_link">Tất cả
                                                     sản phẩm</a>
                                             </li>
                                             <li class="menu_item_lv2">
                                                 <i
                                                     class="fa-solid fa-shirt"></i>
-                                                <a href="/html/sanphamao.html" title="Áo"
+                                                <a href="sanphamao.html" title="Áo"
                                                     class="menu_link">Áo</a>
                                                 <i
                                                     class="fa-solid fa-arrow-right"></i>
                                                 <ul class="menu_dropdown_lv2">
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamaokhoac.html"
                                                             class="menu_link">Áo
                                                             Khoác</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamaothun.html"
                                                             class="menu_link">Áo
                                                             Thun</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamaosomi.html"
                                                             class="menu_link">Áo
                                                             Sơ Mi</a>
                                                     </li>
@@ -169,23 +170,23 @@
                                             <li class="menu_item_lv2">
                                                 <i
                                                     class="fa-solid fa-shirt"></i>
-                                                <a href title="Quần"
+                                                <a href="sanphamquan.html" title="Quần"
                                                     class="menu_link">Quần</a>
                                                 <i
                                                     class="fa-solid fa-arrow-right"></i>
                                                 <ul class="menu_dropdown_lv2">
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamquanjean.html"
                                                             class="menu_link">Quần
                                                             jean</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamquankaki.html"
                                                             class="menu_link">Quần
                                                             kaki</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href
+                                                        <a href="sanphamquantay.html"
                                                             class="menu_link">Quần
                                                             tây</a>
                                                     </li>
@@ -194,7 +195,7 @@
                                             <li class="menu_item_lv2">
                                                 <i
                                                     class="fa-solid fa-hat-cowboy"></i>
-                                                <a href title="Quần"
+                                                <a href="setquanaso.html" title="Quần"
                                                     class="menu_link">Set Quần
                                                     áo</a>
                                             </li>
@@ -202,44 +203,44 @@
                                     </div>
                                 </li>
                                 <li class="menu-item">
-                                    <a href class="menu-link">
+                                    <a href="phukien.html" class="menu-link">
                                         <span>Phụ kiện</span>
                                         <i class="fa-solid fa-angle-down"></i>
                                     </a>
                                     <div class="sub_top_menu">
                                         <ul class="menu_dropdown">
                                             <li class="menu_item_lv2">
-                                                <a href
+                                                <a href="non.html"
                                                     class="menu_link">Nón</a>
                                             </li>
                                             <li class="menu_item_lv2">
-                                                <a href class="menu_link">Thắt
+                                                <a href="thatlung.html" class="menu_link">Thắt
                                                     Lưng</a>
                                             </li>
                                             <li class="menu_item_lv2">
-                                                <a href
+                                                <a href="daydep.html"
                                                     class="menu_link">Dày-Dép</a>
                                             </li>
                                             <li class="menu_item_lv2">
-                                                <a href class="menu_link">Mắt
+                                                <a href="matkhinh.html" class="menu_link">Mắt
                                                     kính</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="menu-item">
-                                    <a href class="menu-link">
+                                    <a href="#" class="menu-link">
                                         <span>Tin thời trang</span>
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="/html/gioithieu.html"
+                                    <a href="gioithieu.html"
                                         class="menu-link">
                                         <span>Giới Thiệu</span>
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="/html/lienhe.html"
+                                    <a href="lienhe.html"
                                         class="menu-link">
                                         <span>Liên Hệ</span>
                                     </a>
@@ -255,7 +256,7 @@
             <div class="flash-sale">
                 <div class="banner">
                     <picture>
-                        <img src="/img/slider3.jpg" alt="Slide 2" />
+                        <img src="img/slider3.jpg" alt="Slide 2" />
                     </picture>
                 </div>
                 <h2>Sản Phẩm Nổi Bật</h2>
@@ -347,14 +348,14 @@
                         <h3>PHƯƠNG THỨC THANH TOÁN</h3>
                         <div class="payment-methods"
                             style="display: flex; gap: 10px;">
-                            <img src="/img/ship-codjpg.jpg"
+                            <img src="img/ship-codjpg.jpg"
                                 alt="Ship cod"
                                 style="width: 40px; height: auto;">
-                            <img src="/img/vnpay.png"
+                            <img src="img/vnpay.png"
                                 alt="VN Pay" style="width: 40px; height: auto;">
-                            <img src="/img/momo.png"
+                            <img src="img/momo.png"
                                 alt="Momo" style="width: 40px; height: auto;">
-                            <img src="/img/zalopay.png"
+                            <img src="img/zalopay.png"
                                 alt="ZaloPay"
                                 style="width: 40px; height: auto;">
                         </div>
@@ -367,6 +368,6 @@
                 </div>
             </div>
         </footer>
-        <script src="/js/sanphamaokhoac.js"></script>
+        <script src="js/sanphamquan.js"></script>
     </body>
 </html>

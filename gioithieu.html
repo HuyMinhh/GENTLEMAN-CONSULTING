@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Web bán hàng</title>
-        <link rel="stylesheet" href="/css/sanpham.css">
+        <title>Giới thiệu</title>
+        <link rel="stylesheet" href="css/gioithieu.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <link rel="icon" type="image/png" href="favicon.png">
@@ -91,8 +91,7 @@
                                     </a>
                                 </li>
                                 <li class="action-item">
-                                    <a href="/html/login.html"
-                                        class="action-btn"
+                                    <a href="#" class="action-btn"
                                         id="account-btn">
                                         <i class="fa-regular fa-user"></i>
                                         <span class="action-title">Tài
@@ -100,8 +99,7 @@
                                     </a>
                                 </li>
                                 <li class="action-item">
-                                    <a href="/html/gioihang.html"
-                                        class="action-btn">
+                                    <a href class="action-btn">
                                         <i class="fa-solid fa-bag-shopping"></i>
                                         <span class="action-title">Giỏ
                                             hàng</span>
@@ -139,30 +137,29 @@
                                     <div class="sub_top_menu">
                                         <ul class="menu_dropdown">
                                             <li class="menu_item_lv2">
-                                                <a href="/html/sanpham.html"
-                                                    class="menu_link">Tất cả
+                                                <a href class="menu_link">Tất cả
                                                     sản phẩm</a>
                                             </li>
                                             <li class="menu_item_lv2">
                                                 <i
                                                     class="fa-solid fa-shirt"></i>
-                                                <a href="/html/sanphamao.html" title="Áo"
+                                                <a href title="Áo"
                                                     class="menu_link">Áo</a>
                                                 <i
                                                     class="fa-solid fa-arrow-right"></i>
                                                 <ul class="menu_dropdown_lv2">
                                                     <li class="menu_item_lv3">
-                                                        <a href ="/html/sanphamaokhoac.html"
+                                                        <a href
                                                             class="menu_link">Áo
                                                             Khoác</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href ="/html/sanphamaothun.html"
+                                                        <a href
                                                             class="menu_link">Áo
                                                             Thun</a>
                                                     </li>
                                                     <li class="menu_item_lv3">
-                                                        <a href ="/html/sanphamaosomi.html"
+                                                        <a href
                                                             class="menu_link">Áo
                                                             Sơ Mi</a>
                                                     </li>
@@ -252,123 +249,47 @@
                 </div>
             </div>
         </header>
-        <!-- Flash sale và products -->
-        <div class="container">
-            <div class="flash-sale">
-                <div class="banner">
-                    <picture>
-                        <img src="/img/slider3.jpg" alt="Slide 2" />
-                    </picture>
+
+        <!-- ===== ABOUT SECTION ===== -->
+        <main class="container" style="margin: 50px auto;">
+            <h2
+                style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 40px;">
+                VỀ CHÚNG TÔI
+            </h2>
+            <div class="about-wrapper"
+                style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+                <div class="about-image" style="flex: 1; min-width: 300px;">
+                    <img src="/img/logo.png"
+                        alt="About 160Store"
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
                 </div>
-                <h2>Sản Phẩm Nổi Bật</h2>
-                <div class="product-grid-container">
-                    <div class="sort-btn-container">
-                        <select id="sort-select" class="sort-select">
-                            <option value="default">Sắp xếp</option>
-                            <option value="asc">Giá Thấp đến Cao</option>
-                            <option value="desc">Giá Cao đến Thấp</option>
-                        </select>
-                    </div>
-                    <div id="product-list" class="product-grid">
-                        <!-- Sản phẩm sẽ được thêm động bởi JavaScript -->
-                    </div>
-                    <div class="load-more-container">
-                        <a id="load-more-btn" class="load-more-btn"
-                            onclick="loadMoreProducts()">Xem thêm</a>
-                        <p id="no-more-products-msg"
-                            style="font-size: 0.8em; color: #777; text-align: center; margin-top: 10px; display: none;">Hết
-                            sản phẩm</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer"
-            style="background-color: #000; color: #fff; padding: 20px 0;">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>GIỚI THIỆU</h3>
-                        <p>160STORE - Chuỗi Phân Phối Thời Trang Nam Chuẩn
-                            Hiệu</p>
-                        <p>02871006789</p>
-                        <p>cx@160store.com</p>
-                        <p>Giờ mở cửa: 08:30 - 22:00</p>
-                        <p>Nhân viên tư vấn phản hồi tin nhắn đến 24:00 (Mỗi
-                            ngày)</p>
-                    </div>
-
-                    <div class="footer-column">
-                        <h3>CHÍNH SÁCH</h3>
-                        <ul>
-                            <li><a href="#"
-                                    style="color: #fff; text-decoration: none;">Hướng
-                                    dẫn đặt hàng</a></li>
-                            <li><a href="#"
-                                    style="color: #fff; text-decoration: none;">Chính
-                                    sách đổi trả</a></li>
-                            <li><a href="#"
-                                    style="color: #fff; text-decoration: none;">Chính
-                                    sách bảo mật</a></li>
-                            <li><a href="#"
-                                    style="color: #fff; text-decoration: none;">Chính
-                                    sách vận chuyển</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-column">
-                        <h3>ĐỊA CHỈ CỬA HÀNG (22 CH)</h3>
-                        <div class="store-locations">
-                            <div class="location-group">
-                                <h4>HỒ CHÍ MINH (10 CH)</h4>
-                                <p>297/3 Tô Hiến Thành, Phường 13, Quận 10, TP
-                                    Hồ Chí Minh</p>
-                            </div>
-                            <div class="location-group">
-                                <h4>HÀ NỘI (2 CH)</h4>
-                                <p>Số 26 phố Lê Đại Hành, Phường Lê Đại Hành,
-                                    Quận Hai Bà Trưng, TP Hà Nội</p>
-                            </div>
-                            <div class="location-group">
-                                <h4>CẦN THƠ (2 CH)</h4>
-                                <p>Số 35 Trần Phú, Phường Cái Khế, Quận Ninh
-                                    Kiều, TP Cần Thơ</p>
-                            </div>
-                            <div class="location-group">
-                                <h4>ĐÀ NẴNG (2 CH)</h4>
-                                <p>332 D. Lê Duẩn, Tân Chính, Thanh Khê, Đà
-                                    Nẵng</p>
-                            </div>
-                        </div>
-                        <a href="store.html" class="view-all-stores"
-                            style="color: #fff; text-decoration: none; display: inline-block; margin-top: 10px;">XEM
-                            TẤT CẢ CỬA HÀNG</a>
-                    </div>
-
-                    <div class="footer-column">
-                        <h3>PHƯƠNG THỨC THANH TOÁN</h3>
-                        <div class="payment-methods"
-                            style="display: flex; gap: 10px;">
-                            <img src="/img/ship-codjpg.jpg"
-                                alt="Ship cod"
-                                style="width: 40px; height: auto;">
-                            <img src="/img/vnpay.png"
-                                alt="VN Pay" style="width: 40px; height: auto;">
-                            <img src="/img/momo.png"
-                                alt="Momo" style="width: 40px; height: auto;">
-                            <img src="/img/zalopay.png"
-                                alt="ZaloPay"
-                                style="width: 40px; height: auto;">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom"
-                    style="text-align: center; padding-top: 20px; border-top: 1px solid #fff; margin-top: 20px;">
-                    <p>BẢN QUYỀN THUỘC VỀ GENTLEMAN</p>
+                <div class="about-text" style="flex: 2; min-width: 300px;">
+                    <p style="margin-bottom: 15px; line-height: 1.6;">160Store
+                        ra đời với sứ mệnh mang đến những bộ trang phục nam
+                        chuẩn hiệu, chất lượng cao với mức giá hợp lý. Chúng tôi
+                        tự hào là chuỗi phân phối thời trang nam hàng đầu, không
+                        ngừng đổi mới và lắng nghe khách hàng để mang lại trải
+                        nghiệm mua sắm hoàn hảo.</p>
+                    <p style="margin-bottom: 15px; line-height: 1.6;">Tại
+                        160Store, bạn sẽ tìm thấy đa dạng mẫu mã từ áo thun,
+                        quần jean, áo khoác đến phụ kiện thời trang. Mỗi sản
+                        phẩm đều được tuyển chọn kỹ lưỡng, kiểm định chất lượng
+                        và cập nhật theo xu hướng mới nhất.</p>
+                    <p style="margin-bottom: 20px; line-height: 1.6;">Chúng tôi
+                        cam kết:</p>
+                    <ul
+                        style="list-style: disc inside; margin-left: 20px; line-height: 1.6;">
+                        <li>Chất lượng sản phẩm tốt nhất với giá thành cạnh
+                            tranh.</li>
+                        <li>Dịch vụ chăm sóc khách hàng chuyên nghiệp, nhanh
+                            chóng.</li>
+                        <li>Chính sách bảo hành, đổi trả linh hoạt, minh
+                            bạch.</li>
+                        <li>Giao hàng nhanh chóng trên toàn quốc.</li>
+                    </ul>
                 </div>
             </div>
-        </footer>
-        <script src="/js/sanphamaos.js"></script>
+        </main>
     </body>
+    <script src="/js/gioithieu.js"></script>
 </html>
