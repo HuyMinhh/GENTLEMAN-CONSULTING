@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Admin - Quản Lý Sản Phẩm</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trang Admin - Quản Lý Sản Phẩm</title>
+        <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -71,118 +71,144 @@
             color: red;
             margin-top: 10px;
         }
+        #homeBtn {
+    background-color: #2196F3;
+}
+#homeBtn:hover {
+    background-color: #0b7dda;
+}
+
     </style>
-</head>
-<body>
-    <h1>Trang Admin - Quản Lý Sản Phẩm</h1>
-    
-    <!-- Danh sách sản phẩm -->
-    <h2>Danh Sách Sản Phẩm</h2>
-    <div id="productList"></div>
-    <div id="errorMessage" class="error"></div>
+    </head>
+    <body>
+        <h1>Trang Admin - Quản Lý Sản Phẩm</h1>
 
-    <!-- Form 1: Thêm sản phẩm cơ bản (tên, giá cũ, giá mới) -->
-    <h2>Form 1: Thêm Sản Phẩm Cơ Bản</h2>
-    <form id="form1">
-        <label for="name1">Tên Sản Phẩm:</label>
-        <input type="text" id="name1" required>
-        
-        <label for="category1">Loại Sản Phẩm:</label>
-        <input type="text" id="category1">
-        
-        <label for="oldPrice1">Giá Cũ:</label>
-        <input type="number" id="oldPrice1" required>
-        
-        <label for="newPrice1">Giá Mới:</label>
-        <input type="number" id="newPrice1" required>
-        
-        <button type="submit">Thêm Sản Phẩm</button>
-    </form>
+        <!-- Danh sách sản phẩm -->
+        <h2>Danh Sách Sản Phẩm</h2>
+        <div id="productList"></div>
+        <div id="errorMessage" class="error"></div>
 
-    <!-- Form 2: Thêm sản phẩm chi tiết (thông tin, giá, link ảnh, kích thước, màu sắc, mô tả) -->
-    <h2>Form 2: Thêm Sản Phẩm Chi Tiết</h2>
-    <form id="form2">
-        <label for="name2">Tên Sản Phẩm:</label>
-        <input type="text" id="name2" required>
-        
-        <label for="category2">Loại Sản Phẩm:</label>
-        <input type="text" id="category2">
-        
-        <label for="price2">Giá:</label>
-        <input type="number" id="price2" required>
-        
-        <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
-        <div class="image-links">
-            <input type="text" id="imageLink2-1" placeholder="Ảnh 1" required>
-            <input type="text" id="imageLink2-2" placeholder="Ảnh 2" required>
-            <input type="text" id="imageLink2-3" placeholder="Ảnh 3" required>
-            <input type="text" id="imageLink2-4" placeholder="Ảnh 4" required>
-            <input type="text" id="imageLink2-5" placeholder="Ảnh 5" required>
-            <input type="text" id="imageLink2-6" placeholder="Ảnh 6" required>
-            <input type="text" id="imageLink2-7" placeholder="Ảnh 7" required>
-            <input type="text" id="imageLink2-8" placeholder="Ảnh 8" required>
-            <input type="text" id="imageLink2-9" placeholder="Ảnh 9" required>
-        </div>
-        
-        <label for="sizes2">Kích Thước (phân cách bằng dấu phẩy, ví dụ: S,M,L):</label>
-        <input type="text" id="sizes2">
-        
-        <label for="colors2">Màu Sắc (phân cách bằng dấu phẩy, ví dụ: Đỏ,Xanh,Đen):</label>
-        <input type="text" id="colors2">
-        
-        <label for="description2">Mô Tả:</label>
-        <textarea id="description2" rows="4"></textarea>
-        
-        <button type="submit">Thêm Sản Phẩm</button>
-    </form>
+        <!-- Form 1: Thêm sản phẩm cơ bản (tên, giá cũ, giá mới) -->
+        <h2>Form 1: Thêm Sản Phẩm Cơ Bản</h2>
+        <form id="form1">
+            <label for="name1">Tên Sản Phẩm:</label>
+            <input type="text" id="name1" required>
 
-    <!-- Form 3: Sửa/Xóa sản phẩm chi tiết (tên, giá cũ/mới, mô tả, link ảnh, kích thước, màu sắc) -->
-    <h2>Form 3: Sửa/Xóa Sản Phẩm Chi Tiết</h2>
-    <form id="form3">
-        <label for="productSelect">Chọn Sản Phẩm Để Sửa/Xóa:</label>
-        <select id="productSelect">
-            <option value="">-- Chọn sản phẩm --</option>
-        </select>
-        
-        <label for="name3">Tên Sản Phẩm:</label>
-        <input type="text" id="name3">
-        
-        <label for="category3">Loại Sản Phẩm:</label>
-        <input type="text" id="category3">
-        
-        <label for="oldPrice3">Giá Cũ:</label>
-        <input type="number" id="oldPrice3">
-        
-        <label for="newPrice3">Giá Mới:</label>
-        <input type="number" id="newPrice3">
-        
-        <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
-        <div class="image-links">
-            <input type="text" id="imageLink3-1" placeholder="Ảnh 1">
-            <input type="text" id="imageLink3-2" placeholder="Ảnh 2">
-            <input type="text" id="imageLink3-3" placeholder="Ảnh 3">
-            <input type="text" id="imageLink3-4" placeholder="Ảnh 4">
-            <input type="text" id="imageLink3-5" placeholder="Ảnh 5">
-            <input type="text" id="imageLink3-6" placeholder="Ảnh 6">
-            <input type="text" id="imageLink3-7" placeholder="Ảnh 7">
-            <input type="text" id="imageLink3-8" placeholder="Ảnh 8">
-            <input type="text" id="imageLink3-9" placeholder="Ảnh 9">
-        </div>
-        
-        <label for="sizes3">Kích Thước (phân cách bằng dấu phẩy):</label>
-        <input type="text" id="sizes3">
-        
-        <label for="colors3">Màu Sắc (phân cách bằng dấu phẩy):</label>
-        <input type="text" id="colors3">
-        
-        <label for="description3">Mô Tả:</label>
-        <textarea id="description3" rows="4"></textarea>
-        
-        <button type="button" id="updateBtn">Cập Nhật Sản Phẩm</button>
-        <button type="button" id="deleteBtn">Xóa Sản Phẩm</button>
-    </form>
+            <label for="category1">Loại Sản Phẩm:</label>
+            <input type="text" id="category1">
 
-    <script>
+            <label for="oldPrice1">Giá Cũ:</label>
+            <input type="number" id="oldPrice1" required>
+
+            <label for="newPrice1">Giá Mới:</label>
+            <input type="number" id="newPrice1" required>
+
+            <button type="submit">Thêm Sản Phẩm</button>
+        </form>
+
+        <!-- Form 2: Thêm sản phẩm chi tiết (thông tin, giá, link ảnh, kích thước, màu sắc, mô tả) -->
+        <h2>Form 2: Thêm Sản Phẩm Chi Tiết</h2>
+        <form id="form2">
+            <label for="name2">Tên Sản Phẩm:</label>
+            <input type="text" id="name2" required>
+
+            <label for="category2">Loại Sản Phẩm:</label>
+            <input type="text" id="category2">
+
+            <label for="price2">Giá:</label>
+            <input type="number" id="price2" required>
+
+            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu
+                phẩy):</label>
+            <div class="image-links">
+                <input type="text" id="imageLink2-1" placeholder="Ảnh 1"
+                    required>
+                <input type="text" id="imageLink2-2" placeholder="Ảnh 2"
+                    required>
+                <input type="text" id="imageLink2-3" placeholder="Ảnh 3"
+                    required>
+                <input type="text" id="imageLink2-4" placeholder="Ảnh 4"
+                    required>
+                <input type="text" id="imageLink2-5" placeholder="Ảnh 5"
+                    required>
+                <input type="text" id="imageLink2-6" placeholder="Ảnh 6"
+                    required>
+                <input type="text" id="imageLink2-7" placeholder="Ảnh 7"
+                    required>
+                <input type="text" id="imageLink2-8" placeholder="Ảnh 8"
+                    required>
+                <input type="text" id="imageLink2-9" placeholder="Ảnh 9"
+                    required>
+            </div>
+
+            <label for="sizes2">Kích Thước (phân cách bằng dấu phẩy, ví dụ:
+                S,M,L):</label>
+            <input type="text" id="sizes2">
+
+            <label for="colors2">Màu Sắc (phân cách bằng dấu phẩy, ví dụ:
+                Đỏ,Xanh,Đen):</label>
+            <input type="text" id="colors2">
+
+            <label for="description2">Mô Tả:</label>
+            <textarea id="description2" rows="4"></textarea>
+
+            <button type="submit">Thêm Sản Phẩm</button>
+        </form>
+
+        <!-- Form 3: Sửa/Xóa sản phẩm chi tiết (tên, giá cũ/mới, mô tả, link ảnh, kích thước, màu sắc) -->
+        <h2>Form 3: Sửa/Xóa Sản Phẩm Chi Tiết</h2>
+        <form id="form3">
+            <label for="productSelect">Chọn Sản Phẩm Để Sửa/Xóa:</label>
+            <select id="productSelect">
+                <option value>-- Chọn sản phẩm --</option>
+            </select>
+
+            <label for="name3">Tên Sản Phẩm:</label>
+            <input type="text" id="name3">
+
+            <label for="category3">Loại Sản Phẩm:</label>
+            <input type="text" id="category3">
+
+            <label for="oldPrice3">Giá Cũ:</label>
+            <input type="number" id="oldPrice3">
+
+            <label for="newPrice3">Giá Mới:</label>
+            <input type="number" id="newPrice3">
+
+            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu
+                phẩy):</label>
+            <div class="image-links">
+                <input type="text" id="imageLink3-1" placeholder="Ảnh 1">
+                <input type="text" id="imageLink3-2" placeholder="Ảnh 2">
+                <input type="text" id="imageLink3-3" placeholder="Ảnh 3">
+                <input type="text" id="imageLink3-4" placeholder="Ảnh 4">
+                <input type="text" id="imageLink3-5" placeholder="Ảnh 5">
+                <input type="text" id="imageLink3-6" placeholder="Ảnh 6">
+                <input type="text" id="imageLink3-7" placeholder="Ảnh 7">
+                <input type="text" id="imageLink3-8" placeholder="Ảnh 8">
+                <input type="text" id="imageLink3-9" placeholder="Ảnh 9">
+            </div>
+
+            <label for="sizes3">Kích Thước (phân cách bằng dấu phẩy):</label>
+            <input type="text" id="sizes3">
+
+            <label for="colors3">Màu Sắc (phân cách bằng dấu phẩy):</label>
+            <input type="text" id="colors3">
+
+            <label for="description3">Mô Tả:</label>
+            <textarea id="description3" rows="4"></textarea>
+
+            <button type="button" id="updateBtn">Cập Nhật Sản Phẩm</button>
+            <button type="button" id="deleteBtn">Xóa Sản Phẩm</button>
+            <button type="button" id="homeBtn">Về Trang Chủ</button>
+        </form>
+
+        <script>
+        // Nút về trang chủ
+document.getElementById('homeBtn').addEventListener('click', function() {
+    window.location.href = 'index.html';
+});
+
         // Sử dụng localStorage để lưu trữ dữ liệu sản phẩm
         let products = JSON.parse(localStorage.getItem('products')) || [];
         const productList = document.getElementById('productList');
@@ -406,5 +432,5 @@
         // Hiển thị ban đầu
         displayProducts();
     </script>
-</body>
+    </body>
 </html>

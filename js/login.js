@@ -222,18 +222,22 @@ document.addEventListener('DOMContentLoaded', () => {
             );
 
             if (account) {
-                alert('Đăng nhập thành công!');
-                // Lưu email vào localStorage để theo dõi người dùng đã đăng nhập
-                localStorage.setItem('currentUser', emailValue);
-                loginForm.reset();
-                if (loginModal) loginModal.style.display = 'none';
-                // Điều hướng về index.html
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 500);
-            } else {
-                alert('Tài khoản không tồn tại!');
-            }
+    alert('Đăng nhập thành công!');
+    // Lưu email vào localStorage để theo dõi người dùng đã đăng nhập
+    localStorage.setItem('currentUser', emailValue);
+    loginForm.reset();
+    if (loginModal) loginModal.style.display = 'none';
+
+    // Điều hướng theo vai trò
+    setTimeout(() => {
+        if (account.role === 'admin') {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    }, 500);
+}
+
         }
     });
 
@@ -389,3 +393,18 @@ document.addEventListener('DOMContentLoaded', () => {
 //         console.error('Modal elements not fully found!');
 //     }
 // });
+// ====== TẠO TÀI KHOẢN ADMIN MẶC ĐỊNH ======
+document.addEventListener('DOMContentLoaded', () => {
+    const existingAccounts = JSON.parse(localStorage.getItem('registeredAccounts')) || [];
+    
+    const adminEmail = 'admin@shop.com';
+    const adminPassword = 'admin123';
+
+    const adminExists = existingAccounts.some(acc => acc.email === adminEmail);
+
+    if (!adminExists) {
+        existingAccounts.push({ email: adminEmail, password: adminPassword, role: 'admin' });
+        localStorage.setItem('registeredAccounts', JSON.stringify(existingAccounts));
+        console.log('✅ Tài khoản   admin đã được tạo:', adminEmail);
+    }
+});
