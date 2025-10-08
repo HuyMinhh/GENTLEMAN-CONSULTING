@@ -271,7 +271,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 
@@ -466,11 +466,11 @@ function searchProducts(query) {
       const div = document.createElement("div");
       div.classList.add("search-result-item");
       div.innerHTML = `
-        <img src="${product.images && product.images.length > 0 ? product.images[0] : '/img/placeholder.jpg'}" alt="${product.name}">
+        <img src="${product.images && product.images.length > 0 ? product.images[0] : 'img/placeholder.jpg'}" alt="${product.name}">
         <h4>${product.name}</h4>
       `;
       div.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
         searchResults.classList.remove("active");
       });
       searchResults.appendChild(div);

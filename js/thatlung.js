@@ -12,19 +12,14 @@ function updateCartCount() {
   }
 }
 
-// Hàm lọc sản phẩm có từ "Quần kaki", "quần kaki" hoặc "kaki" trong tên hoặc thể loại
-function filterProductsByCategory(products) {
+// Hàm lọc sản phẩm có từ "Quần jean", "quần jean" hoặc "jean" trong thể loại
+function filterProductsByName(products) {
   return products.filter(product => 
-    (product.name && (
-      product.name.toLowerCase().includes("thắt lưng") || 
-      product.name.toLowerCase().includes("lưng") || 
-      product.name.toLowerCase().includes("that lung")
-    )) ||
-    (product.category && (
-      product.category.toLowerCase().includes("thắt lưng") || 
-      product.category.toLowerCase().includes("lưng") || 
+    product.category && (
+      product.category.toLowerCase().includes("Thắt lưng") ||
+      product.category.toLowerCase().includes("thắt lưng") ||
       product.category.toLowerCase().includes("that lung")
-    ))
+    )
   );
 }
 
@@ -154,8 +149,8 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   }
 
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
-  // Lọc sản phẩm có từ "quần kaki" hoặc "kaki" trong tên hoặc thể loại
-  let filteredProducts = filterProductsByCategory(allProducts);
+  // Lọc sản phẩm có từ "quần jean" hoặc "jean" trong thể loại
+  let filteredProducts = filterProductsByName(allProducts);
   if (filteredProducts.length === 0) {
     productList.innerHTML = '<p style="text-align: center; color: #777;">Không có sản phẩm</p>';
     const loadMoreBtn = document.getElementById("load-more-btn");
@@ -197,7 +192,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 
@@ -334,4 +329,82 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("storage", () => {
     updateCartCount();
   });
+
+  // Thêm sự kiện cho nút "Xem thêm"
+  const loadMoreBtn = document.getElementById("load-more-btn");
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", loadMoreProducts);
+  }
+
+  // Thêm sự kiện tìm kiếm
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+
+  if (searchForm && searchInput && searchResults) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const query = searchInput.value.trim();
+      searchProducts(query);
+    });
+
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.trim();
+      searchProducts(query);
+    });
+
+    // Ẩn kết quả khi click ra ngoài
+    document.addEventListener("click", (e) => {
+      if (!searchForm.contains(e.target)) {
+        searchResults.classList.remove("active");
+      }
+    });
+  }
 });
+
+// Đảm bảo searchBar được định nghĩa
+const searchBar = document.querySelector(".search_bar");
+
+// Hàm tìm kiếm sản phẩm
+function searchProducts(query) {
+  const allProducts = JSON.parse(localStorage.getItem("products")) || [];
+  const filteredProducts = filterProductsByName(allProducts);
+  const searchResults = document.getElementById("searchResults");
+  if (!searchResults) return;
+
+  searchResults.innerHTML = "";
+
+  if (query.trim() === "") {
+    searchResults.classList.remove("active");
+    return;
+  }
+
+  const matchedProducts = filteredProducts.filter(product =>
+    product.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+  if (matchedProducts.length > 0) {
+    matchedProducts.forEach(product => {
+      const div = document.createElement("div");
+      div.classList.add("search-result-item");
+      div.innerHTML = `
+        <img src="${product.images && product.images.length > 0 ? product.images[0] : '/img/placeholder.jpg'}" alt="${product.name}">
+        <h4>${product.name}</h4>
+      `;
+      div.addEventListener("click", () => {
+        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        searchResults.classList.remove("active");
+      });
+      searchResults.appendChild(div);
+    });
+    searchResults.classList.add("active");
+  } else {
+    const div = document.createElement("div");
+    div.classList.add("search-result-item");
+    div.textContent = "Không thấy kết quả tìm kiếm";
+    div.style.textAlign = "center";
+    div.style.color = "#777";
+    searchResults.appendChild(div);
+    searchResults.classList.add("active");
+  }
+}

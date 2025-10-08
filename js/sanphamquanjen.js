@@ -16,8 +16,8 @@ function updateCartCount() {
 function filterProductsByName(products) {
   return products.filter(product => 
     product.category && (
+      product.category.toLowerCase().includes("Quần jean") ||
       product.category.toLowerCase().includes("quần jean") ||
-      product.category.toLowerCase().includes("quan jean") ||
       product.category.toLowerCase().includes("jean")
     )
   );
@@ -192,7 +192,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 

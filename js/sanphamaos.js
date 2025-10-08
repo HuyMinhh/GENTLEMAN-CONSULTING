@@ -12,10 +12,14 @@ function updateCartCount() {
   }
 }
 
-// Hàm lọc sản phẩm có từ "áo" trong tên
+// Hàm lọc sản phẩm có từ "Quần jean", "quần jean" hoặc "jean" trong thể loại
 function filterProductsByName(products) {
   return products.filter(product => 
-    product.name && (product.name.toLowerCase().includes("áo") || product.name.toLowerCase().includes("ao"))
+    product.category && (
+      product.category.toLowerCase().includes("Áo") ||
+      product.category.toLowerCase().includes("áo") ||
+      product.category.toLowerCase().includes("ao")
+    )
   );
 }
 
@@ -145,7 +149,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   }
 
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
-  // Lọc sản phẩm có từ "áo" trong tên
+  // Lọc sản phẩm có từ "quần jean" hoặc "jean" trong thể loại
   let filteredProducts = filterProductsByName(allProducts);
   if (filteredProducts.length === 0) {
     productList.innerHTML = '<p style="text-align: center; color: #777;">Không có sản phẩm</p>';
@@ -188,7 +192,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 

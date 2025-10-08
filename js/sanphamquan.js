@@ -12,11 +12,14 @@ function updateCartCount() {
   }
 }
 
-// Hàm lọc sản phẩm có từ "Quần" hoặc "quần" trong tên hoặc thể loại
+// Hàm lọc sản phẩm có từ "Quần jean", "quần jean" hoặc "jean" trong thể loại
 function filterProductsByName(products) {
   return products.filter(product => 
-    (product.name && (product.name.toLowerCase().includes("quần") || product.name.toLowerCase().includes("quan"))) ||
-    (product.category && (product.category.toLowerCase().includes("quần") || product.category.toLowerCase().includes("quan")))
+    product.category && (
+      product.category.toLowerCase().includes("Quần") ||
+      product.category.toLowerCase().includes("quần") ||
+      product.category.toLowerCase().includes("quan")
+    )
   );
 }
 
@@ -146,7 +149,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   }
 
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
-  // Lọc sản phẩm có từ "quần" trong tên hoặc thể loại
+  // Lọc sản phẩm có từ "quần jean" hoặc "jean" trong thể loại
   let filteredProducts = filterProductsByName(allProducts);
   if (filteredProducts.length === 0) {
     productList.innerHTML = '<p style="text-align: center; color: #777;">Không có sản phẩm</p>';
@@ -189,7 +192,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 

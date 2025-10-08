@@ -12,11 +12,14 @@ function updateCartCount() {
   }
 }
 
-// Hàm lọc sản phẩm thuộc loại "áo khoác"
-function filterProductsByCategory(products) {
+// Hàm lọc sản phẩm có từ "Quần jean", "quần jean" hoặc "jean" trong thể loại
+function filterProductsByName(products) {
   return products.filter(product => 
-    product.category && (product.category.toLowerCase().includes("áo khoác") || product.category.toLowerCase().includes("ao khoac")) ||
-    (product.name && (product.name.toLowerCase().includes("áo khoác") || product.name.toLowerCase().includes("ao khoac")))
+    product.category && (
+      product.category.toLowerCase().includes("Áo khoác") ||
+      product.category.toLowerCase().includes("áo khoác") ||
+      product.category.toLowerCase().includes("ao khoac")
+    )
   );
 }
 
@@ -146,8 +149,8 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   }
 
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
-  // Lọc sản phẩm thuộc loại "áo khoác"
-  let filteredProducts = filterProductsByCategory(allProducts);
+  // Lọc sản phẩm có từ "quần jean" hoặc "jean" trong thể loại
+  let filteredProducts = filterProductsByName(allProducts);
   if (filteredProducts.length === 0) {
     productList.innerHTML = '<p style="text-align: center; color: #777;">Không có sản phẩm</p>';
     const loadMoreBtn = document.getElementById("load-more-btn");
@@ -189,7 +192,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
     const viewDetailIcon = div.querySelector(".view-detail");
     if (viewDetailIcon) {
       viewDetailIcon.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
+        window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
       });
     }
 
@@ -365,7 +368,7 @@ const searchBar = document.querySelector(".search_bar");
 // Hàm tìm kiếm sản phẩm
 function searchProducts(query) {
   const allProducts = JSON.parse(localStorage.getItem("products")) || [];
-  const filteredProducts = filterProductsByCategory(allProducts);
+  const filteredProducts = filterProductsByName(allProducts);
   const searchResults = document.getElementById("searchResults");
   if (!searchResults) return;
 
