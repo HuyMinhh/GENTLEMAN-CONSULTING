@@ -1137,3 +1137,67 @@ header {
     width: 50px;
   }
 }
+
+.zoom-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.zoom-image {
+  max-width: 90%;
+  max-height: 90%;
+  transform-origin: 0 0;
+  transition: transform 0.1s;
+}
+
+.close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.zoom-prev, .zoom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1002;
+}
+
+.zoom-prev {
+  left: 20px;
+}
+
+.zoom-next {
+  right: 20px;
+}
+
+.zoom-prev:hover, .zoom-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.zoom-modal.zoom-in {
+  cursor: zoom-in;
+}
+
+.zoom-modal.grabbing {
+  cursor: grabbing;
+}
