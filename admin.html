@@ -72,12 +72,11 @@
             margin-top: 10px;
         }
         #homeBtn {
-    background-color: #2196F3;
-}
-#homeBtn:hover {
-    background-color: #0b7dda;
-}
-
+            background-color: #2196F3;
+        }
+        #homeBtn:hover {
+            background-color: #0b7dda;
+        }
     </style>
     </head>
     <body>
@@ -118,35 +117,23 @@
             <label for="price2">Giá:</label>
             <input type="number" id="price2" required>
 
-            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu
-                phẩy):</label>
+            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
             <div class="image-links">
-                <input type="text" id="imageLink2-1" placeholder="Ảnh 1"
-                    required>
-                <input type="text" id="imageLink2-2" placeholder="Ảnh 2"
-                    required>
-                <input type="text" id="imageLink2-3" placeholder="Ảnh 3"
-                    required>
-                <input type="text" id="imageLink2-4" placeholder="Ảnh 4"
-                    required>
-                <input type="text" id="imageLink2-5" placeholder="Ảnh 5"
-                    required>
-                <input type="text" id="imageLink2-6" placeholder="Ảnh 6"
-                    required>
-                <input type="text" id="imageLink2-7" placeholder="Ảnh 7"
-                    required>
-                <input type="text" id="imageLink2-8" placeholder="Ảnh 8"
-                    required>
-                <input type="text" id="imageLink2-9" placeholder="Ảnh 9"
-                    required>
+                <input type="text" id="imageLink2-1" placeholder="Ảnh 1" required>
+                <input type="text" id="imageLink2-2" placeholder="Ảnh 2" required>
+                <input type="text" id="imageLink2-3" placeholder="Ảnh 3" required>
+                <input type="text" id="imageLink2-4" placeholder="Ảnh 4" required>
+                <input type="text" id="imageLink2-5" placeholder="Ảnh 5" required>
+                <input type="text" id="imageLink2-6" placeholder="Ảnh 6" required>
+                <input type="text" id="imageLink2-7" placeholder="Ảnh 7" required>
+                <input type="text" id="imageLink2-8" placeholder="Ảnh 8" required>
+                <input type="text" id="imageLink2-9" placeholder="Ảnh 9" required>
             </div>
 
-            <label for="sizes2">Kích Thước (phân cách bằng dấu phẩy, ví dụ:
-                S,M,L):</label>
+            <label for="sizes2">Kích Thước (phân cách bằng dấu phẩy, ví dụ: S,M,L):</label>
             <input type="text" id="sizes2">
 
-            <label for="colors2">Màu Sắc (phân cách bằng dấu phẩy, ví dụ:
-                Đỏ,Xanh,Đen):</label>
+            <label for="colors2">Màu Sắc (phân cách bằng dấu phẩy, ví dụ: Đỏ,Xanh,Đen):</label>
             <input type="text" id="colors2">
 
             <label for="description2">Mô Tả:</label>
@@ -175,8 +162,7 @@
             <label for="newPrice3">Giá Mới:</label>
             <input type="number" id="newPrice3">
 
-            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu
-                phẩy):</label>
+            <label>Link Ảnh (Nhập ít nhất 9 ảnh, phân cách bằng dấu phẩy):</label>
             <div class="image-links">
                 <input type="text" id="imageLink3-1" placeholder="Ảnh 1">
                 <input type="text" id="imageLink3-2" placeholder="Ảnh 2">
@@ -205,12 +191,69 @@
 
         <script>
         // Nút về trang chủ
-document.getElementById('homeBtn').addEventListener('click', function() {
-    window.location.href = 'index.html';
-});
+        document.getElementById('homeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Dữ liệu sản phẩm gán cứng
+        const defaultProducts = [
+            {
+                name: "Áo Thun Nam Peanuts Over Cream",
+                category: "Áo Thun",
+                oldPrice: 500000,
+                newPrice: 349000,
+                price: 349000,
+                images: [
+                    "https://cdn.hstatic.net/products/1000253775/video-ao-thun-nam-icondenim-peanuts-over-cream_6524964259e14e3b903c1ba57efc7679_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160store2264_f3a2ed945a4c482ca2e342b638b2e409_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/atid0604_9453d56b5b0c4d9c9992775f1ed13194_1024x1024.png",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-10_b4e3a6a86f4c4a75859b14f1f5834da0_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-2_79eed834324b4942b64beb6410fe977a_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-4_c04411d222b44dbaba8762d397f7f692_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-5_c54701e391dc42caace7bf7e357c32bc_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-6_911aa23f13de4be4b607a79a19b20e40_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604_f378ffc3fd2a48f8bab5c557ebd3dd0e_1024x1024.jpg"
+                ],
+                sizes: ["S", "M", "L", "XL"],
+                colors: ["Đỏ", "Xanh", "Đen"],
+                description: "Áo Thun Nam Peanuts Over Cream\nChất liệu: Cotton 220GSM\nForm: Re"
+            },
+            {
+                name: "Áo Thun Nam Raglan Peanuts Touchdown",
+                category: "Áo Thun",
+                oldPrice: 600000,
+                newPrice: 379000,
+                price: 379000,
+                images: [
+                    "https://cdn.hstatic.net/products/1000253775/video-ao-thun-nam-raglan-icondenim-peanuts-touchdown_fda22a3afe914544b10d7879e1c4f77e_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/atid0642_dd13e33c23774184ab1bcf9436e30dca_1024x1024.png",
+                    "https://cdn.hstatic.net/products/1000253775/atid0604_9453d56b5b0c4d9c9992775f1ed13194_1024x1024.png",
+                    "https://cdn.hstatic.net/products/1000253775/ao-thun-nam-raglan-icondenim-peanuts-touchdown9_ca083a76e6694c65a3fbfdb32edbc49b_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/ao-thun-nam-raglan-icondenim-peanuts-touchdown14_579cf3b0ac4443fa943b593a0f9f0884_compact.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/ao-thun-nam-raglan-icondenim-peanuts-touchdown5_7da6160fdda5436da77a5c1445b34e6c_compact.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-5_c54701e391dc42caace7bf7e357c32bc_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604-6_911aa23f13de4be4b607a79a19b20e40_1024x1024.jpg",
+                    "https://cdn.hstatic.net/products/1000253775/160_ao_thun_604_f378ffc3fd2a48f8bab5c557ebd3dd0e_1024x1024.jpg"
+                ],
+                sizes: ["S", "M", "L", "XL"],
+                colors: ["Trắng xám"],
+                description: "Áo Thun Nam Raglan Peanuts Touchdown\nChất liệu: Cotton 220GSM\nForm: Re"
+            }
+        ];
 
         // Sử dụng localStorage để lưu trữ dữ liệu sản phẩm
         let products = JSON.parse(localStorage.getItem('products')) || [];
+        
+        // Nếu localStorage trống, lưu defaultProducts vào localStorage
+        if (products.length === 0) {
+            products = defaultProducts;
+            try {
+                localStorage.setItem('products', JSON.stringify(products));
+            } catch (e) {
+                console.error('Lỗi khi lưu defaultProducts vào localStorage:', e);
+            }
+        }
+
         const productList = document.getElementById('productList');
         const productSelect = document.getElementById('productSelect');
         const errorMessage = document.getElementById('errorMessage');
