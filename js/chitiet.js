@@ -1905,12 +1905,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3>${product.name || "Tên sản phẩm"}</h3>
         <p class="old-price">${product.oldPrice ? product.oldPrice + " VND" : ""}</p>
         <p class="new-price">${product.newPrice || product.price ? (product.newPrice || product.price) + " VND" : "N/A"}</p>
-        <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i><span>Thêm vào giỏ hàng</span></button>
+        <button class="add-to-cart-btn1"><i class="fas fa-shopping-cart"></i><span>Thêm vào giỏ hàng</span></button>
       `;
       productList.appendChild(div);
     });
 
-    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+    document.querySelectorAll(".add-to-cart-btn1").forEach(btn => {
       btn.addEventListener("click", () => {
         const productName = btn.closest(".product-item").querySelector("h3").textContent;
         showAddToCartModal(products.find(p => p.name === productName));
@@ -2031,7 +2031,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quantity = val;
   });
 
-  document.querySelector(".add-to-cart-btn")?.addEventListener("click", () => {
+  document.querySelector(".add-to-cart-btn1")?.addEventListener("click", () => {
     if (!selectedSize) return alert("Vui lòng chọn kích thước!");
     if (!selectedColor) return alert("Vui lòng chọn màu sắc!");
 
@@ -2042,7 +2042,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!product) return alert("Sản phẩm không tồn tại!");
 
-    showAddToCartModal(product);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItem = { ...product, quantity, selectedSize, selectedColor };
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
 
     const successPopup = document.createElement("div");
     successPopup.className = "success-popup";
@@ -2054,9 +2058,30 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".buy-now-btn")?.addEventListener("click", () => {
     if (!selectedSize) return alert("Vui lòng chọn kích thước!");
     if (!selectedColor) return alert("Vui lòng chọn màu sắc!");
-    alert(`Đặt hàng thành công sản phẩm (${selectedSize}, ${selectedColor}) x${quantity}!`);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products.find(p => p.name === productId);
+
+    if (!product) return alert("Sản phẩm không tồn tại!");
+
+    // Clear the existing cart
     localStorage.removeItem("cart");
+
+    // Add the selected product to the cart
+    const cartItem = {
+      ...product,
+      quantity: quantity,
+      selectedSize: selectedSize,
+      selectedColor: selectedColor
+    };
+    const cart = [cartItem];
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
+
+    // Redirect to dathang.html
+    window.location.href = "dathang.html";
   });
 
   document.querySelectorAll(".thumbnail").forEach((thumb, i) => {

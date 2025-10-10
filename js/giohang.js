@@ -524,6 +524,18 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartDisplay();
   }
 
+  // Thêm sự kiện cho nút "Mua Hàng"
+  const checkoutBtn = document.querySelector(".checkout-btn");
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      if (cart.length === 0) {
+        showToast("Giỏ hàng trống! Vui lòng thêm sản phẩm trước khi thanh toán.", "error");
+      } else {
+        window.location.href = "dathang.html";
+      }
+    });
+  }
+
   // Hiển thị chi tiết sản phẩm (nếu là trang chi tiết)
   let currentIndex = 0;
   let selectedSize = null;
@@ -755,50 +767,47 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
 
-// Đảm bảo searchBar được định nghĩa
-const searchBar = document.querySelector(".search_bar");
+  // Hàm tìm kiếm sản phẩm
+  function searchProducts(query) {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const searchResults = document.getElementById("searchResults");
+    if (!searchResults) return;
 
-// Hàm tìm kiếm sản phẩm
-function searchProducts(query) {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const searchResults = document.getElementById("searchResults");
-  if (!searchResults) return;
+    searchResults.innerHTML = "";
 
-  searchResults.innerHTML = "";
+    if (query.trim() === "") {
+      searchResults.classList.remove("active");
+      return;
+    }
 
-  if (query.trim() === "") {
-    searchResults.classList.remove("active");
-    return;
-  }
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
 
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(query.toLowerCase())
-  );
-
-  if (filteredProducts.length > 0) {
-    filteredProducts.forEach(product => {
+    if (filteredProducts.length > 0) {
+      filteredProducts.forEach(product => {
+        const div = document.createElement("div");
+        div.classList.add("search-result-item");
+        div.innerHTML = `
+          <img src="${product.images && product.images.length > 0 ? product.images[0] : '/img/placeholder.jpg'}" alt="${product.name}">
+          <h4>${product.name}</h4>
+        `;
+        div.addEventListener("click", () => {
+          window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
+          searchResults.classList.remove("active");
+        });
+        searchResults.appendChild(div);
+      });
+      searchResults.classList.add("active");
+    } else {
       const div = document.createElement("div");
       div.classList.add("search-result-item");
-      div.innerHTML = `
-        <img src="${product.images && product.images.length > 0 ? product.images[0] : '/img/placeholder.jpg'}" alt="${product.name}">
-        <h4>${product.name}</h4>
-      `;
-      div.addEventListener("click", () => {
-        window.location.href = `/html/chitiet.html?id=${encodeURIComponent(product.name)}`;
-        searchResults.classList.remove("active");
-      });
+      div.textContent = "Không thấy kết quả tìm kiếm";
+      div.style.textAlign = "center";
+      div.style.color = "#777";
       searchResults.appendChild(div);
-    });
-    searchResults.classList.add("active");
-  } else {
-    const div = document.createElement("div");
-    div.classList.add("search-result-item");
-    div.textContent = "Không thấy kết quả tìm kiếm";
-    div.style.textAlign = "center";
-    div.style.color = "#777";
-    searchResults.appendChild(div);
-    searchResults.classList.add("active");
+      searchResults.classList.add("active");
+    }
   }
-}
+});
