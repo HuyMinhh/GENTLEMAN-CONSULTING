@@ -170,7 +170,10 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   // Lấy danh sách sản phẩm từ startIndex với giới hạn limit
   const displayedProducts = filteredProducts.slice(startIndex, startIndex + limit);
 
-  productList.innerHTML = ""; // Xóa nội dung cũ
+  // Thêm sản phẩm vào danh sách hiện tại thay vì xóa nội dung cũ
+  if (startIndex === 0) {
+    productList.innerHTML = ""; // Xóa nội dung cũ chỉ khi load lần đầu
+  }
   displayedProducts.forEach((product) => {
     const div = document.createElement("div");
     div.classList.add("product-item");
@@ -211,7 +214,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
   const loadMoreBtn = document.getElementById("load-more-btn");
   const noMoreProductsMsg = document.getElementById("no-more-products-msg");
   if (loadMoreBtn && noMoreProductsMsg) {
-    const totalDisplayed = startIndex + displayedProducts.length;
+    const totalDisplayed = productList.children.length;
     if (totalDisplayed >= filteredProducts.length) {
       loadMoreBtn.classList.add("disabled");
       noMoreProductsMsg.style.display = "block";
@@ -224,7 +227,7 @@ function displayProducts(sortOrder = "asc", startIndex = 0, limit = 6) {
 
 // Hàm load thêm sản phẩm khi nhấn "Xem thêm"
 function loadMoreProducts() {
-  let startIndex = document.querySelectorAll("#product-list .product-item").length;
+  const startIndex = document.querySelectorAll("#product-list .product-item").length;
   const sortSelect = document.getElementById("sort-select");
   const sortOrder = sortSelect ? sortSelect.value : "asc";
   displayProducts(sortOrder, startIndex, 6);
@@ -317,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sortSelect.addEventListener("change", () => {
       const sortOrder = sortSelect.value;
       if (sortOrder !== "default") {
-        document.getElementById("product-list").innerHTML = ""; // Xóa danh sách hiện tại
+        document.getElementById("product-list").innerHTML = ""; // Xóa danh sách hiện tại khi sắp xếp
         displayProducts(sortOrder); // Hiển thị lại từ đầu với sắp xếp mới
       }
     });
