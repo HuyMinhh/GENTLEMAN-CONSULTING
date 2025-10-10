@@ -2194,42 +2194,61 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function updateCartDisplay() {
-    if (!cartItems) return;
+    const cartCountElement = document.querySelector(".count-cart");
+    let count = 0;
 
-    cartItems.innerHTML = "";
-    if (cart.length === 0) {
-      cartItems.innerHTML = `<p class="no-products">Không có sản phẩm</p>`;
-      tempTotal.textContent = "0đ";
-      shippingFee.textContent = "Miễn phí";
-      voucherDiscount.textContent = "0đ";
-      overlapDiscount.textContent = "0đ";
-      finalTotal.textContent = "0đ (Đã giảm 0đ từ giá gốc)";
-      footerTotal.textContent = "0đ";
-      footerDiscount.textContent = "Đã giảm: 0đ";
-    } else {
-      cart.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.classList.add("cart-item");
-        div.innerHTML = `
-          <img src="${item.images[0] || "/img/placeholder.jpg"}" alt="${item.name}" class="item-image">
-          <div class="item-details">
-            <p class="item-name">${item.name}</p>
-            <p class="item-attributes">Đổi ý 15 ngày</p>
-            <p class="item-attributes">${item.selectedColor || "N/A"} / ${item.selectedSize || "N/A"}</p>
-            <div class="quantity-control">
-              <button class="quantity-btn decrease" data-index="${index}">-</button>
-              <input type="number" class="quantity-input" value="${item.quantity || 1}" min="1" data-index="${index}">
-              <button class="quantity-btn increase" data-index="${index}">+</button>
+    if (cartItems) {
+      cartItems.innerHTML = "";
+      if (cart.length === 0) {
+        cartItems.innerHTML = `<p class="no-products">Không có sản phẩm</p>`;
+        tempTotal.textContent = "0đ";
+        shippingFee.textContent = "Miễn phí";
+        voucherDiscount.textContent = "0đ";
+        overlapDiscount.textContent = "0đ";
+        finalTotal.textContent = "0đ (Đã giảm 0đ từ giá gốc)";
+        footerTotal.textContent = "0đ";
+        footerDiscount.textContent = "Đã giảm: 0đ";
+      } else {
+        cart.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.classList.add("cart-item");
+          div.innerHTML = `
+            <img src="${item.images[0] || "/img/placeholder.jpg"}" alt="${
+            item.name
+          }" class="item-image">
+            <div class="item-details">
+              <p class="item-name">${item.name}</p>
+              <p class="item-attributes">Đổi ý 15 ngày</p>
+              <p class="item-attributes">${item.selectedColor || "N/A"} / ${
+            item.selectedSize || "N/A"
+          }</p>
+              <div class="quantity-control">
+                <button class="quantity-btn decrease" data-index="${index}">-</button>
+                <input type="number" class="quantity-input" value="${
+                  item.quantity || 1
+                }" min="1" data-index="${index}">
+                <button class="quantity-btn increase" data-index="${index}">+</button>
+              </div>
+              <p class="item-price">${(
+                (item.newPrice || item.price) * (item.quantity || 1)
+              ).toLocaleString()}đ</p>
             </div>
-            <p class="item-price">${((item.newPrice || item.price) * (item.quantity || 1)).toLocaleString()}đ</p>
-          </div>
-          <button class="remove-item" data-index="${index}">X</button>
-        `;
-        cartItems.appendChild(div);
-      });
-      updateTotal();
-      attachEventListeners();
+            <button class="remove-item" data-index="${index}">X</button>
+          `;
+          cartItems.appendChild(div);
+          count += item.quantity || 1; // Cộng dồn số lượng sản phẩm
+        });
+        updateTotal();
+        attachEventListeners();
+      }
     }
+
+    // Cập nhật số lượng sản phẩm trên biểu tượng giỏ hàng
+    if (cartCountElement) {
+      cartCountElement.textContent = count;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   function updateTotal() {
@@ -2237,12 +2256,18 @@ document.addEventListener("DOMContentLoaded", () => {
       (sum, item) => sum + (item.newPrice || item.price) * (item.quantity || 1),
       0
     );
-    let discount = parseInt(voucherDiscount.textContent.replace(/[^0-9]/g, "")) || 0;
+    let discount =
+      parseInt(voucherDiscount.textContent.replace(/[^0-9]/g, "")) || 0;
     tempTotal.textContent = total.toLocaleString() + "đ";
     shippingFee.textContent = "Miễn phí";
-    finalTotal.textContent = (total - discount).toLocaleString() + "đ (Đã giảm " + discount.toLocaleString() + "đ từ giá gốc)";
+    finalTotal.textContent =
+      (total - discount).toLocaleString() +
+      "đ (Đã giảm " +
+      discount.toLocaleString() +
+      "đ từ giá gốc)";
     footerTotal.textContent = (total - discount).toLocaleString() + "đ";
-    footerDiscount.textContent = discount > 0 ? `Đã giảm: ${discount.toLocaleString()}đ` : "Đã giảm: 0đ";
+    footerDiscount.textContent =
+      discount > 0 ? `Đã giảm: ${discount.toLocaleString()}đ` : "Đã giảm: 0đ";
   }
 
   const voucherRadios = document.querySelectorAll('input[name="voucher"]');
@@ -2278,7 +2303,8 @@ document.addEventListener("DOMContentLoaded", () => {
   voucherRadios.forEach((radio) => {
     radio.addEventListener("change", () => {
       let total = cart.reduce(
-        (sum, item) => sum + (item.newPrice || item.price) * (item.quantity || 1),
+        (sum, item) =>
+          sum + (item.newPrice || item.price) * (item.quantity || 1),
         0
       );
       let discount = 0;
@@ -2291,7 +2317,11 @@ document.addEventListener("DOMContentLoaded", () => {
         discount = 100000;
       } else {
         discount = 0;
-        alert(`Đơn hàng không đủ điều kiện cho voucher ${radio.value}! Tổng tiền: ${total.toLocaleString()}đ`);
+        alert(
+          `Đơn hàng không đủ điều kiện cho voucher ${
+            radio.value
+          }! Tổng tiền: ${total.toLocaleString()}đ`
+        );
         radio.checked = false;
       }
 
@@ -2474,11 +2504,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.classList.add("search-result-item");
         div.innerHTML = `
-          <img src="${product.images && product.images.length > 0 ? product.images[0] : "/img/placeholder.jpg"}" alt="${product.name}">
+          <img src="${
+            product.images && product.images.length > 0
+              ? product.images[0]
+              : "/img/placeholder.jpg"
+          }" alt="${product.name}">
           <h4>${product.name}</h4>
         `;
         div.addEventListener("click", () => {
-          window.location.href = `chitiet.html?id=${encodeURIComponent(product.name)}`;
+          window.location.href = `chitiet.html?id=${encodeURIComponent(
+            product.name
+          )}`;
           searchResults.classList.remove("active");
         });
         searchResults.appendChild(div);

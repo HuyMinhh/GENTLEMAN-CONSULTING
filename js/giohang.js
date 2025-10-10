@@ -446,89 +446,96 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartContent = document.getElementById("cart-content");
     const itemCount = document.getElementById("item-count");
     const totalPrice = document.getElementById("total-price");
+    const cartCountElement = document.querySelector(".count-cart");
 
-    if (!cartContent || !itemCount || !totalPrice) return;
-
-    cartContent.innerHTML = "";
     let total = 0;
     let count = 0;
 
-    if (cart.length === 0) {
-      // Hiển thị thông báo giỏ hàng trống và nút "Thêm sản phẩm"
-      cartContent.innerHTML = `
-        <p class="empty-cart-message">Không có sản phẩm trong giỏ hàng</p>
-        <a href="sanpham.html" class="add-product-btn">Thêm sản phẩm</a>
-      `;
-      itemCount.textContent = "0";
-      totalPrice.textContent = "0đ";
-      return;
+    if (cartContent && itemCount && totalPrice) {
+      cartContent.innerHTML = "";
+      if (cart.length === 0) {
+        cartContent.innerHTML = `
+          <p class="empty-cart-message">Không có sản phẩm trong giỏ hàng</p>
+          <a href="sanpham.html" class="add-product-btn">Thêm sản phẩm</a>
+        `;
+        itemCount.textContent = "0";
+        totalPrice.textContent = "0đ";
+      } else {
+        cart.forEach((item, index) => {
+          const itemTotal = (item.newPrice || item.price) * item.quantity;
+          total += itemTotal;
+          count += item.quantity;
+
+          const div = document.createElement("div");
+          div.classList.add("cart-item");
+          let attributesHtml = '';
+          if (item.selectedSize) attributesHtml += `Size: ${item.selectedSize}`;
+          if (item.selectedColor) attributesHtml += `${item.selectedSize ? ', ' : ''}Màu: ${item.selectedColor}`;
+          div.innerHTML = `
+                <input type="checkbox" class="item-checkbox" checked>
+                <img src="${(item.images && item.images.length > 0 ? item.images[0] : "/img/placeholder.jpg")}" alt="${item.name}" class="item-image">
+                <div class="item-details">
+                    <h3 class="item-name">${item.name}</h3>
+                    ${attributesHtml ? `<p class="item-attributes">${attributesHtml}</p>` : ''}
+                    <p class="item-price">${item.newPrice || item.price}đ <span class="original-price">${item.oldPrice ? item.oldPrice + "đ" : ""}</span></p>
+                    <div class="quantity-control">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" value="${item.quantity}" min="1" class="quantity-input">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                </div>
+                <button class="remove-item" data-index="${index}">Xóa</button>
+            `;
+          cartContent.appendChild(div);
+        });
+
+        // Thêm sự kiện cho các nút tăng/giảm số lượng và xóa
+        document.querySelectorAll(".cart-item").forEach((div, index) => {
+          const minusBtn = div.querySelector(".quantity-btn:first-child");
+          const plusBtn = div.querySelector(".quantity-btn:last-child");
+          const quantityInput = div.querySelector(".quantity-input");
+          const removeBtn = div.querySelector(".remove-item");
+
+          minusBtn.addEventListener("click", () => {
+            if (quantityInput.value > 1) {
+              quantityInput.value = parseInt(quantityInput.value) - 1;
+              cart[index].quantity = parseInt(quantityInput.value);
+              updateCart();
+            }
+          });
+
+          plusBtn.addEventListener("click", () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            cart[index].quantity = parseInt(quantityInput.value);
+            updateCart();
+          });
+
+          quantityInput.addEventListener("change", () => {
+            cart[index].quantity = parseInt(quantityInput.value);
+            if (cart[index].quantity < 1) cart[index].quantity = 1;
+            quantityInput.value = cart[index].quantity;
+            updateCart();
+          });
+
+          removeBtn.addEventListener("click", () => {
+            if (confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
+              cart.splice(index, 1);
+              updateCart();
+              showToast("Đã xóa sản phẩm khỏi giỏ hàng!", "success");
+            }
+          });
+        });
+
+        itemCount.textContent = count;
+        totalPrice.textContent = total + "đ";
+      }
     }
 
-    cart.forEach((item) => {
-      const itemTotal = (item.newPrice || item.price) * item.quantity;
-      total += itemTotal;
-      count += item.quantity;
+    // Cập nhật số lượng sản phẩm trên biểu tượng giỏ hàng
+    if (cartCountElement) {
+      cartCountElement.textContent = count;
+    }
 
-      const div = document.createElement("div");
-      div.classList.add("cart-item");
-      let attributesHtml = '';
-      if (item.selectedSize) attributesHtml += `Size: ${item.selectedSize}`;
-      if (item.selectedColor) attributesHtml += `${item.selectedSize ? ', ' : ''}Màu: ${item.selectedColor}`;
-      div.innerHTML = `
-            <input type="checkbox" class="item-checkbox" checked>
-            <img src="${(item.images && item.images.length > 0 ? item.images[0] : "/img/placeholder.jpg")}" alt="${item.name}" class="item-image">
-            <div class="item-details">
-                <h3 class="item-name">${item.name}</h3>
-                ${attributesHtml ? `<p class="item-attributes">${attributesHtml}</p>` : ''}
-                <p class="item-price">${item.newPrice || item.price}đ <span class="original-price">${item.oldPrice ? item.oldPrice + "đ" : ""}</span></p>
-                <div class="quantity-control">
-                    <button class="quantity-btn">-</button>
-                    <input type="number" value="${item.quantity}" min="1" class="quantity-input">
-                    <button class="quantity-btn">+</button>
-                </div>
-            </div>
-            <button class="remove-item">Xóa</button>
-        `;
-      cartContent.appendChild(div);
-
-      // Thêm sự kiện cho nút tăng/giảm số lượng
-      const minusBtn = div.querySelector(".quantity-btn:first-child");
-      const plusBtn = div.querySelector(".quantity-btn:last-child");
-      const quantityInput = div.querySelector(".quantity-input");
-
-      minusBtn.addEventListener("click", () => {
-        if (quantityInput.value > 1) {
-          quantityInput.value = parseInt(quantityInput.value) - 1;
-          item.quantity = parseInt(quantityInput.value);
-          updateCart();
-        }
-      });
-
-      plusBtn.addEventListener("click", () => {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-        item.quantity = parseInt(quantityInput.value);
-        updateCart();
-      });
-
-      quantityInput.addEventListener("change", () => {
-        item.quantity = parseInt(quantityInput.value);
-        if (item.quantity < 1) item.quantity = 1;
-        quantityInput.value = item.quantity;
-        updateCart();
-      });
-
-      // Thêm sự kiện xóa item
-      div.querySelector(".remove-item").addEventListener("click", () => {
-        if (confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
-          cart = cart.filter((cartItem) => cartItem !== item);
-          updateCart();
-          showToast("Đã xóa sản phẩm khỏi giỏ hàng!", "success");
-        }
-      });
-    });
-
-    itemCount.textContent = count;
-    totalPrice.textContent = total + "đ";
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
@@ -552,22 +559,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectAllCheckbox = document.querySelector(".select-all-checkbox");
   const removeAllBtn = document.querySelector(".remove-all-btn");
 
-  selectAllCheckbox.addEventListener("change", () => {
-    const checkboxes = document.querySelectorAll(".item-checkbox");
-    checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
-  });
+  if (selectAllCheckbox) {
+    selectAllCheckbox.addEventListener("change", () => {
+      const checkboxes = document.querySelectorAll(".item-checkbox");
+      checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
+    });
+  }
 
-  removeAllBtn.addEventListener("click", () => {
-    if (cart.length === 0) {
-      showToast("Giỏ hàng đã trống!", "error");
-      return;
-    }
-    if (confirm("Bạn có chắc muốn xóa tất cả sản phẩm không?")) {
-      cart = [];
-      updateCart();
-      showToast("Đã xóa tất cả sản phẩm khỏi giỏ hàng!", "success");
-    }
-  });
+  if (removeAllBtn) {
+    removeAllBtn.addEventListener("click", () => {
+      if (cart.length === 0) {
+        showToast("Giỏ hàng đã trống!", "error");
+        return;
+      }
+      if (confirm("Bạn có chắc muốn xóa tất cả sản phẩm không?")) {
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCart();
+        showToast("Đã xóa tất cả sản phẩm khỏi giỏ hàng!", "success");
+      }
+    });
+  }
 
   // Hàm hiển thị toast notification
   function showToast(message, type) {
@@ -581,11 +593,10 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.innerHTML = `<div class="marquee-text">${message}</div>`;
       toastContainer.appendChild(toast);
 
-      // Xóa toast sau khi animation kết thúc
       setTimeout(() => {
         toast.remove();
         if (toastContainer.children.length === 0) toastContainer.remove();
-      }, 4500); // 4s hiển thị + 0.5s fade out
+      }, 4500);
     }
   }
 
@@ -606,7 +617,6 @@ document.addEventListener("DOMContentLoaded", () => {
       searchProducts(query);
     });
 
-    // Ẩn kết quả khi click ra ngoài
     document.addEventListener("click", (e) => {
       if (!searchForm.contains(e.target)) {
         searchResults.classList.remove("active");
@@ -614,7 +624,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Hàm tìm kiếm sản phẩm
   function searchProducts(query) {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const searchResults = document.getElementById("searchResults");
@@ -657,6 +666,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Gọi hàm updateCartDisplay khi trang load
   updateCartDisplay();
 });
